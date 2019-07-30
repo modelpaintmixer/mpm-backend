@@ -40,7 +40,7 @@ module.exports = {
           originsMap[row.abbreviation] = row.id
         }
 
-        let lines = fs.readFileSync("Tamiya.txt", "utf8").split(os.EOL)
+        let lines = fs.readFileSync("seed-data/Tamiya.txt", "utf8").split(os.EOL)
         for (let lineRaw of lines) {
           // Skip any lines that start with "#"
           if (lineRaw === "" || lineRaw.startsWith("#")) {
