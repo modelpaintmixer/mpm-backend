@@ -1,0 +1,7 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "color-mixer.db",
+    "logging": false
+  }
+}

@@ -1,0 +1,101 @@
+Tamiya,X-1,Black,231f20,acrylic|gloss,81501,81001,
+Tamiya,X-2,White,ffffff,acrylic|gloss,81502,81002,
+Tamiya,X-3,Royal Blue,2f3e69,acrylic|gloss,81503,81003,
+Tamiya,X-4,Blue,005baa,acrylic|gloss,81504,81004,
+Tamiya,X-5,Green,01714b,acrylic|gloss,81505,81005,
+Tamiya,X-6,Orange,f37020,acrylic|gloss,81506,81006,
+Tamiya,X-7,Red,ed1b24,acrylic|gloss,81507,81007,
+Tamiya,X-8,Lemon Yellow,ffd900,acrylic|gloss,81508,81008,
+Tamiya,X-9,Brown,7a3e36,acrylic|gloss,81509,81009,
+Tamiya,X-10,Gun Metal,58595b,acrylic|gloss,81510,81010,
+Tamiya,X-11,Chrome Silver,cbccce,acrylic|gloss,81511,81011,
+Tamiya,X-12,Gold Leaf,c9a12f,acrylic|gloss,81512,81012,
+Tamiya,X-13,Metallic Blue,006282,acrylic|gloss,81513,81013,
+Tamiya,X-14,Sky Blue,00b1ef,acrylic|gloss,81514,81014,
+Tamiya,X-15,Light Green,75bf42,acrylic|gloss,81515,81015,
+Tamiya,X-16,Purple,544f8f,acrylic|gloss,81516,81016,
+Tamiya,X-17,Pink,f385b6,acrylic|gloss,81517,81017,
+Tamiya,X-18,Semi-Gloss Black,231f20,acrylic|satin,81518,81018,
+Tamiya,X-19,Smoke,bbbcbe,acrylic|gloss|transparent,81519,81019,
+Tamiya,X-22,Clear,ffffff,acrylic|gloss|clear,81522,81022,
+Tamiya,X-23,Clear Blue,005baa,acrylic|gloss|transparent,81523,81023,
+Tamiya,X-24,Clear Yellow,ffdd00,acrylic|gloss|transparent,81524,81024,
+Tamiya,X-25,Clear Green,01714b,acrylic|gloss|transparent,81525,81025,
+Tamiya,X-26,Clear Orange,f37020,acrylic|gloss|transparent,81526,81026,
+Tamiya,X-27,Clear Red,ed1b24,acrylic|gloss|transparent,81527,81027,
+Tamiya,X-28,Park Green,00a652,acrylic|gloss,81528,81028,
+Tamiya,X-31,Titanium Gold,d5bf9a,acrylic|gloss,81531,81031,
+Tamiya,X-32,Titanium Silver,d5d4c2,acrylic|gloss,81532,81032,
+Tamiya,X-33,Bronze,5a3f48,acrylic|gloss,81533,81033,
+Tamiya,X-34,Metallic Brown,b7561f,acrylic|gloss,81534,81034,
+Tamiya,X-35,Semi-Gloss Clear,ffffff,acrylic|satin|clear,81535,,
+Tamiya,XF-1,Flat Black,231f20,acrylic|flat,81701,81301,
+Tamiya,XF-2,Flat White,ffffff,acrylic|flat,81702,81302,
+Tamiya,XF-3,Flat Yellow,ffdd00,acrylic|flat,81703,81303,
+Tamiya,XF-4,Yellow Green,b4be43,acrylic|flat,81704,81304,
+Tamiya,XF-5,Flat Green,63856a,acrylic|flat,81705,81305,
+Tamiya,XF-6,Copper,c45335,acrylic|flat,81706,81306,
+Tamiya,XF-7,Flat Red,ec1c2a,acrylic|flat,81707,81307,
+Tamiya,XF-8,Flat Blue,006b8f,acrylic|flat,81708,81308,
+Tamiya,XF-9,Hull Red,6b3238,acrylic|flat,81709,81309,
+Tamiya,XF-10,Flat Brown,5c3f39,acrylic|flat,81710,81310,
+Tamiya,XF-11,J.N. Green,104a3c,acrylic|flat,81711,81311,JP
+Tamiya,XF-12,J.N. Gray,c0cbbd,acrylic|flat,81712,81312,JP
+Tamiya,XF-13,J.A. Green,284c48,acrylic|flat,81713,81313,JP
+Tamiya,XF-14,J.A. Gray,e5e3cc,acrylic|flat,81714,81314,JP
+Tamiya,XF-15,Flat Flesh,fdc68e,acrylic|flat,81715,81315,
+Tamiya,XF-16,Flat Aluminum,a8acaf,acrylic|flat,81716,81316,
+Tamiya,XF-17,Sea Blue,2d4261,acrylic|flat,81717,81317,
+Tamiya,XF-18,Medium Blue,1b7da0,acrylic|flat,81718,81318,
+Tamiya,XF-19,Sky Gray,c0c9c4,acrylic|flat,81719,81319,
+Tamiya,XF-20,Medium Gray,a6b5b2,acrylic|flat,81720,81320,
+Tamiya,XF-21,Sky,e2eeca,acrylic|flat,81721,81321,UK
+Tamiya,XF-22,RLM Gray,4e5d62,acrylic|flat,81722,81322,DE
+Tamiya,XF-23,Light Blue,71c8d1,acrylic|flat,81723,81323,
+Tamiya,XF-24,Dark Gray,436e7e,acrylic|flat,81724,81324,
+Tamiya,XF-25,Light Sea Gray,74909e,acrylic|flat,81725,81325,
+Tamiya,XF-26,Deep Green,2d6a48,acrylic|flat,81726,81326,
+Tamiya,XF-27,Black Green,134a33,acrylic|flat,81727,81327,
+Tamiya,XF-28,Dark Copper,a27f6c,acrylic|flat,81728,81328,
+Tamiya,XF-49,Khaki,998d43,acrylic|flat,81749,81349,
+Tamiya,XF-50,Field Blue,1d86a4,acrylic|flat,81750,81350,
+Tamiya,XF-51,Khaki Drab,606666,acrylic|flat,81751,81351,
+Tamiya,XF-52,Flat Earth,9a4f3a,acrylic|flat,81752,81352,
+Tamiya,XF-53,Neutral Gray,627c89,acrylic|flat,81753,81353,
+Tamiya,XF-54,Dark Sea Gray,a0a8ab,acrylic|flat,81754,81354,
+Tamiya,XF-55,Deck Tan,c5b6a1,acrylic|flat,81755,81355,
+Tamiya,XF-56,Metallic Gray,6e6f71,acrylic|flat,81756,81356,
+Tamiya,XF-57,Buff,c4a07e,acrylic|flat,81757,81357,
+Tamiya,XF-58,Olive Green,334c39,acrylic|flat,81758,81358,
+Tamiya,XF-59,Desert Yellow,efbc83,acrylic|flat,81759,81359,
+Tamiya,XF-60,Dark Yellow,bda84d,acrylic|flat,81760,81360,
+Tamiya,XF-61,Dark Green,134a33,acrylic|flat,81761,81361,
+Tamiya,XF-62,Olive Drab,535e40,acrylic|flat,81762,81362,
+Tamiya,XF-63,German Gray,001d1b,acrylic|flat,81763,81363,DE
+Tamiya,XF-64,Red Brown,533c2c,acrylic|flat,81764,81364,
+Tamiya,XF-65,Field Gray,4b6f7b,acrylic|flat,81765,81365,
+Tamiya,XF-66,Light Gray,466675,acrylic|flat,81766,81366,
+Tamiya,XF-67,NATO Green,3f5c3e,acrylic|flat,81767,81367,NATO
+Tamiya,XF-68,NATO Brown,71533b,acrylic|flat,81768,81368,NATO
+Tamiya,XF-69,NATO Black,382225,acrylic|flat,81769,81369,NATO
+Tamiya,XF-70,Dark Green 2,254737,acrylic|flat,81770,81370,
+Tamiya,XF-71,Cockpit Green,76977c,acrylic|flat,81771,81371,
+Tamiya,XF-72,JGSDF Brown,83613b,acrylic|flat,81772,,JP
+Tamiya,XF-73,JGSDF Dark Green,396742,acrylic|flat,8177JP3,,JP
+Tamiya,XF-74,JGSDF Olive Drab,3f5c3e,acrylic|flat,81774,,JP
+Tamiya,XF-75,IJN Gray,626d6f,acrylic|flat,81775,,JP
+Tamiya,XF-76,Gray-Green,a3b289,acrylic|flat,81776,,
+Tamiya,XF-77,IJN Gray 2,656d70,acrylic|flat,81777,,JP
+Tamiya,XF-78,Wooden Deck Tan,d2b684,acrylic|flat,81778,,
+Tamiya,XF-79,Deck Brown,784727,acrylic|flat,81779,,
+Tamiya,XF-80,British Navy Gray,bfc9c8,acrylic|flat,81780,,
+Tamiya,XF-81,Dark Green 2 RAF,3a422b,acrylic|flat,81781,,UK
+Tamiya,XF-82,Ocean Gray 2 RAF,6b7775,acrylic|flat,81782,,UK
+Tamiya,XF-83,Medium Sea Gray 2 RAF,8c9590,acrylic|flat,81783,,UK
+Tamiya,XF-84,Dark Iron,4d3833,acrylic|flat,81784,,
+Tamiya,XF-85,Rubber Black,261c1b,acrylic|flat,81785,,
+Tamiya,XF-86,Flat Clear,ffffff,acrylic|flat|clear,81786,,
+Tamiya,XF-87,IJN Gray (Maizuru Arsenal),7e7f84,acrylic|flat,81787,,JP
+Tamiya,XF-88,DK Yellow 2,c1af4d,acrylic|flat,81788,,DE
+Tamiya,XF-89,DK Green 2,5c8462,acrylic|flat,81789,,DE
+Tamiya,XF-90,DK Brown 2,4f3832,acrylic|flat,81790,,DE
