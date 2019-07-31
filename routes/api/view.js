@@ -25,11 +25,12 @@ router.get("/paint/:id", (req, res) => {
       paint = result
 
       return Promise.all([
-        paint.getStandards({ order: ["id"] }),
-        paint.getAttributes({ order: ["id"] }),
+        paint.getStandards({ order: ["name"] }),
+        paint.getAttributes({ order: ["name"] }),
+        paint.getMixes({ order: ["name"] })
       ])
     })
-    .then(([standards, attributes]) => {
+    .then(([standards, attributes, mixes]) => {
       paint = paint.get()
       paint.Standards = standards.map(standard => {
         standard = standard.get()
@@ -41,6 +42,12 @@ router.get("/paint/:id", (req, res) => {
         attr = attr.get()
         delete attr.PaintsAttributes
         return attr
+      })
+      paint.Mixes = mixes.map(mix => {
+        mix = mix.get()
+        mix.parts = mix.MixesPaints.parts
+        delete mix.MixesPaints
+        return mix
       })
 
       res.send({ paint: paint, timestamp: Date.now() })
