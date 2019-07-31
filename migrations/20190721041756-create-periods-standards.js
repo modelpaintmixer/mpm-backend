@@ -3,12 +3,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("PeriodsStandards", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       standardId: {
         type: Sequelize.INTEGER,
         allowNull: false,

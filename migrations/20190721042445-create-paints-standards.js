@@ -3,12 +3,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("PaintsStandards", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       paintId: {
         type: Sequelize.INTEGER,
         allowNull: false,

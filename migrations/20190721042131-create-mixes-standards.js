@@ -3,12 +3,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("MixesStandards", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       mixId: {
         type: Sequelize.INTEGER,
         allowNull: false,
