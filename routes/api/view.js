@@ -163,7 +163,7 @@ router.get("/standard/:id", (req, res) => {
       return Promise.all([
         standard.getPeriods({ order: ["id"] }),
         standard.getMixes({ order: ["id"] }),
-        standard.getPaints({ order: ["id"] }),
+        standard.getPaints({ order: ["id"], include: [Manufacturer] }),
       ])
     })
     .then(([periods, mixes, paints]) => {
@@ -183,6 +183,8 @@ router.get("/standard/:id", (req, res) => {
         paint = paint.get()
         paint.standardNumber = paint.PaintsStandards.standardNumber
         delete paint.PaintsStandards
+        paint.manufacturer = paint.Manufacturer.showName
+        delete paint.Manufacturer
         return paint
       })
 
@@ -199,7 +201,9 @@ router.get("/manufacturer/:id", (req, res) => {
       manufacturer = result
 
       return Promise.all([
-        manufacturer.getManufacturerLocations({ order: ["id"] }),
+        manufacturer.getManufacturerLocations({
+          order: [["isMain", "DESC"], "country"],
+        }),
         manufacturer.getPaints({ order: ["id"] }),
       ])
     })
