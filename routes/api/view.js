@@ -12,6 +12,7 @@ const {
   Mix,
   Period,
   Standard,
+  Attribute,
 } = require("../../models")
 
 let router = express.Router()
@@ -27,7 +28,7 @@ router.get("/paint/:id", (req, res) => {
       return Promise.all([
         paint.getStandards({ order: ["name"] }),
         paint.getAttributes({ order: ["name"] }),
-        paint.getMixes({ order: ["name"] })
+        paint.getMixes({ order: ["name"] }),
       ])
     })
     .then(([standards, attributes, mixes]) => {
@@ -226,6 +227,30 @@ router.get("/manufacturer/:id", (req, res) => {
       })
 
       res.send({ manufacturer: manufacturer, timestamp: Date.now() })
+    })
+})
+
+router.get("/attribute/:id", (req, res) => {
+  let id = req.params.id
+  let attribute
+
+  Attribute.findByPk(id)
+    .then(result => {
+      attribute = result
+
+      return attribute.getPaints({ order: ["id"], include: [Manufacturer] })
+    })
+    .then(paints => {
+      attribute = attribute.get()
+      attribute.Paints = paints.map(paint => {
+        paint = paint.get()
+        paint.manufacturer = paint.Manufacturer.showName
+        delete paint.Manufacturer
+        delete paint.PaintsAttributes
+        return paint
+      })
+
+      res.send({ attribute: attribute, timestamp: Date.now() })
     })
 })
 
