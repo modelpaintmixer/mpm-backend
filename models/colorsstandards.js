@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = (sequelize, DataTypes) => {
-  const MixesStandards = sequelize.define(
-    "MixesStandards",
+  const ColorsStandards = sequelize.define(
+    "ColorsStandards",
     {
       standardNumber: {
         type: DataTypes.STRING,
@@ -12,5 +12,5 @@ module.exports = (sequelize, DataTypes) => {
     { timestamps: false }
   )
 
-  return MixesStandards
+  return ColorsStandards
 }

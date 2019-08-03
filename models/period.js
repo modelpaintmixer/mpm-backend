@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     { timestamps: false }
   )
   Period.associate = function(models) {
-    Period.belongsToMany(models.Mix, { through: "MixesPeriods" })
+    Period.belongsToMany(models.Color, { through: "ColorsPeriods" })
     Period.belongsToMany(models.Standard, { through: "PeriodsStandards" })
   }
 

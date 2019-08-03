@@ -8,7 +8,7 @@ const {
   Standard,
   Paint,
   Manufacturer,
-  Mix,
+  Color,
   Image,
 } = require("../../models")
 
@@ -16,7 +16,7 @@ let router = express.Router()
 
 router.get("/site", (req, res) => {
   Promise.all([
-    Mix.count(),
+    Color.count(),
     Manufacturer.count(),
     Paint.count(),
     Standard.count(),
@@ -24,7 +24,7 @@ router.get("/site", (req, res) => {
     Image.count(),
   ]).then(values => {
     let stats = {
-      mixes: values[0],
+      colors: values[0],
       manufacturers: values[1],
       paints: values[2],
       standards: values[3],
@@ -39,7 +39,7 @@ router.get("/site", (req, res) => {
 router.get("/changes/:count(\\d+)?", (req, res) => {
   let count = req.params.count ? req.params.count : 8
 
-  let mixes = Mix.findAll({
+  let colors = Color.findAll({
     limit: count,
     order: [["updatedAt", "DESC"]],
   })
@@ -57,7 +57,7 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
     order: [["updatedAt", "DESC"]],
   })
 
-  Promise.all([mfrs, mixes, images, paints]).then(values => {
+  Promise.all([mfrs, colors, images, paints]).then(values => {
     let all = []
 
     for (let value of values) {

@@ -9,7 +9,7 @@ const {
   Manufacturer,
   Origin,
   ProductCode,
-  Mix,
+  Color,
   Period,
   Standard,
   Attribute,
@@ -28,10 +28,10 @@ router.get("/paint/:id", (req, res) => {
       return Promise.all([
         paint.getStandards({ order: ["name"] }),
         paint.getAttributes({ order: ["name"] }),
-        paint.getMixes({ order: ["name"] }),
+        paint.getColors({ order: ["name"] }),
       ])
     })
-    .then(([standards, attributes, mixes]) => {
+    .then(([standards, attributes, colors]) => {
       paint = paint.get()
       paint.Standards = standards.map(standard => {
         standard = standard.get()
@@ -44,54 +44,54 @@ router.get("/paint/:id", (req, res) => {
         delete attr.PaintsAttributes
         return attr
       })
-      paint.Mixes = mixes.map(mix => {
-        mix = mix.get()
-        mix.parts = mix.MixesPaints.parts
-        delete mix.MixesPaints
-        return mix
+      paint.Colors = colors.map(color => {
+        color = color.get()
+        color.parts = color.ColorsPaints.parts
+        delete color.ColorsPaints
+        return color
       })
 
       res.send({ paint: paint, timestamp: Date.now() })
     })
 })
 
-router.get("/mix/:id", (req, res) => {
+router.get("/color/:id", (req, res) => {
   let id = req.params.id
-  let mix
+  let color
 
-  Mix.findByPk(id, { include: [Origin] })
+  Color.findByPk(id, { include: [Origin] })
     .then(result => {
-      mix = result
+      color = result
 
       return Promise.all([
-        mix.getPeriods({ order: ["id"] }),
-        mix.getStandards({ order: ["id"] }),
-        mix.getPaints({ include: [Manufacturer], order: ["id"] }),
+        color.getPeriods({ order: ["id"] }),
+        color.getStandards({ order: ["id"] }),
+        color.getPaints({ include: [Manufacturer], order: ["id"] }),
       ])
     })
     .then(([periods, standards, parts]) => {
-      mix = mix.get()
-      mix.Standards = standards.map(standard => {
+      color = color.get()
+      color.Standards = standards.map(standard => {
         standard = standard.get()
-        standard.standardNumber = standard.MixesStandards.standardNumber
-        delete standard.MixesStandards
+        standard.standardNumber = standard.ColorsStandards.standardNumber
+        delete standard.ColorsStandards
         return standard
       })
-      mix.Periods = periods.map(period => {
+      color.Periods = periods.map(period => {
         period = period.get()
-        delete period.MixesPeriods
+        delete period.ColorsPeriods
         return period
       })
-      mix.parts = parts.map(part => {
+      color.parts = parts.map(part => {
         part = part.get()
-        part.parts = part.MixesPaints.parts
-        delete part.MixesPaints
+        part.parts = part.ColorsPaints.parts
+        delete part.ColorsPaints
         part.manufacturer = part.Manufacturer.showName
         delete part.Manufacturer
         return part
       })
 
-      res.send({ mix: mix, timestamp: Date.now() })
+      res.send({ color: color, timestamp: Date.now() })
     })
 })
 
@@ -105,19 +105,19 @@ router.get("/origin/:id", (req, res) => {
 
       return Promise.all([
         origin.getPaints({ order: ["id"], include: [Manufacturer] }),
-        origin.getMixes({ order: ["id"] }),
+        origin.getColors({ order: ["id"] }),
         origin.getStandards({ order: ["id"] }),
       ])
     })
-    .then(([paints, mixes, standards]) => {
+    .then(([paints, colors, standards]) => {
       origin = origin.get()
       origin.Standards = standards.map(standard => {
         standard = standard.get()
         return standard
       })
-      origin.Mixes = mixes.map(mix => {
-        mix = mix.get()
-        return mix
+      origin.Colors = colors.map(color => {
+        color = color.get()
+        return color
       })
       origin.Paints = paints.map(paint => {
         paint = paint.get()
@@ -139,21 +139,21 @@ router.get("/period/:id", (req, res) => {
       period = result
 
       return Promise.all([
-        period.getMixes({ order: ["id"] }),
+        period.getColors({ order: ["id"] }),
         period.getStandards({ order: ["id"] }),
       ])
     })
-    .then(([mixes, standards]) => {
+    .then(([colors, standards]) => {
       period = period.get()
       period.Standards = standards.map(standard => {
         standard = standard.get()
         delete standard.PeriodsStandards
         return standard
       })
-      period.Mixes = mixes.map(mix => {
-        mix = mix.get()
-        delete mix.MixesPeriods
-        return mix
+      period.Colors = colors.map(color => {
+        color = color.get()
+        delete color.ColorsPeriods
+        return color
       })
 
       res.send({ period: period, timestamp: Date.now() })
@@ -170,22 +170,22 @@ router.get("/standard/:id", (req, res) => {
 
       return Promise.all([
         standard.getPeriods({ order: ["id"] }),
-        standard.getMixes({ order: ["id"] }),
+        standard.getColors({ order: ["id"] }),
         standard.getPaints({ order: ["id"], include: [Manufacturer] }),
       ])
     })
-    .then(([periods, mixes, paints]) => {
+    .then(([periods, colors, paints]) => {
       standard = standard.get()
       standard.Periods = periods.map(period => {
         period = period.get()
         delete period.PeriodsStandards
         return period
       })
-      standard.Mixes = mixes.map(mix => {
-        mix = mix.get()
-        mix.standardNumber = mix.MixesStandards.standardNumber
-        delete mix.MixesStandards
-        return mix
+      standard.Colors = colors.map(color => {
+        color = color.get()
+        color.standardNumber = color.ColorsStandards.standardNumber
+        delete color.ColorsStandards
+        return color
       })
       standard.Paints = paints.map(paint => {
         paint = paint.get()

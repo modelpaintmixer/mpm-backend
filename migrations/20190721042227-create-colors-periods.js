@@ -2,12 +2,12 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("MixesPeriods", {
-      mixId: {
+    return queryInterface.createTable("ColorsPeriods", {
+      colorId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Mixes",
+          model: "Colors",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -27,6 +27,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable("MixesPeriods")
+    return queryInterface.dropTable("ColorsPeriods")
   },
 }

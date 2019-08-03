@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = (sequelize, DataTypes) => {
-  const Mix = sequelize.define(
-    "Mix",
+  const Color = sequelize.define(
+    "Color",
     {
       name: {
         type: DataTypes.STRING,
@@ -26,13 +26,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   )
-  Mix.associate = function(models) {
-    Mix.belongsToMany(models.Standard, { through: "MixesStandards" })
-    Mix.belongsToMany(models.Period, { through: "MixesPeriods" })
-    Mix.belongsToMany(models.Paint, { through: "MixesPaints" })
-    Mix.belongsTo(models.Origin)
-    Mix.hasMany(models.Image)
+  Color.associate = function(models) {
+    Color.belongsToMany(models.Standard, { through: "ColorsStandards" })
+    Color.belongsToMany(models.Period, { through: "ColorsPeriods" })
+    Color.belongsToMany(models.Paint, { through: "ColorsPaints" })
+    Color.belongsTo(models.Origin)
+    Color.hasMany(models.Image)
   }
 
-  return Mix
+  return Color
 }

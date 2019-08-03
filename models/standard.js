@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   )
   Standard.associate = function(models) {
     Standard.belongsToMany(models.Period, { through: "PeriodsStandards" })
-    Standard.belongsToMany(models.Mix, { through: "MixesStandards" })
+    Standard.belongsToMany(models.Color, { through: "ColorsStandards" })
     Standard.belongsToMany(models.Paint, { through: "PaintsStandards" })
     Standard.belongsTo(models.Origin)
   }

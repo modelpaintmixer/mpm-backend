@@ -7,7 +7,7 @@ module.exports = {
     let periodMap = {}
     let standardMap = {}
     let paintMap = {}
-    let mixMap = {}
+    let colorMap = {}
     let now = new Date()
 
     return Promise.all([
@@ -38,7 +38,7 @@ module.exports = {
           paintMap[paint.partNumber] = paint.id
         }
 
-        let mixes = [
+        let colors = [
           {
             name: "Khaki Green no. 3",
             originId: originMap["UK"],
@@ -70,139 +70,139 @@ module.exports = {
             updatedAt: now,
           },
         ]
-        return queryInterface.bulkInsert("Mixes", mixes, {})
+        return queryInterface.bulkInsert("Colors", colors, {})
       })
       .then(() => {
-        return sequelize.query("SELECT id, name FROM Mixes;", {
+        return sequelize.query("SELECT id, name FROM Colors;", {
           type: sequelize.QueryTypes.SELECT,
         })
       })
       .then(results => {
-        for (var mix of results) {
-          mixMap[mix.name] = mix.id
+        for (var color of results) {
+          colorMap[color.name] = color.id
         }
 
-        let mixesStandards = [
+        let colorsStandards = [
           {
             standardId: standardMap["BSc"],
-            mixId: mixMap["Silver Grey"],
+            colorId: colorMap["Silver Grey"],
             standardNumber: "28",
           },
           {
             standardId: standardMap["BSc"],
-            mixId: mixMap["Portland Stone"],
+            colorId: colorMap["Portland Stone"],
             standardNumber: "64",
           },
           {
             standardId: standardMap["BSc"],
-            mixId: mixMap["Light Stone"],
+            colorId: colorMap["Light Stone"],
             standardNumber: "61",
           },
           {
             standardId: standardMap["BSc"],
-            mixId: mixMap["Slate"],
+            colorId: colorMap["Slate"],
             standardNumber: "34",
           },
         ]
-        let mixesPeriods = [
+        let colorsPeriods = [
           {
-            mixId: mixMap["Khaki Green no. 3"],
+            colorId: colorMap["Khaki Green no. 3"],
             periodId: periodMap["WWII"],
           },
           {
-            mixId: mixMap["Silver Grey"],
+            colorId: colorMap["Silver Grey"],
             periodId: periodMap["WWII"],
           },
           {
-            mixId: mixMap["Portland Stone"],
+            colorId: colorMap["Portland Stone"],
             periodId: periodMap["WWII"],
           },
           {
-            mixId: mixMap["Light Stone"],
+            colorId: colorMap["Light Stone"],
             periodId: periodMap["WWII"],
           },
           {
-            mixId: mixMap["Slate"],
+            colorId: colorMap["Slate"],
             periodId: periodMap["WWII"],
           },
         ]
-        let mixesPaints = [
+        let colorsPaints = [
           // Khaki Green no. 3
           {
-            mixId: mixMap["Khaki Green no. 3"],
+            colorId: colorMap["Khaki Green no. 3"],
             paintId: paintMap["XF-62"],
             parts: 3,
           },
           {
-            mixId: mixMap["Khaki Green no. 3"],
+            colorId: colorMap["Khaki Green no. 3"],
             paintId: paintMap["XF-59"],
             parts: 2,
           },
           // Silver Grey
           {
-            mixId: mixMap["Silver Grey"],
+            colorId: colorMap["Silver Grey"],
             paintId: paintMap["XF-21"],
             parts: 1,
           },
           {
-            mixId: mixMap["Silver Grey"],
+            colorId: colorMap["Silver Grey"],
             paintId: paintMap["XF-19"],
             parts: 1,
           },
           {
-            mixId: mixMap["Silver Grey"],
+            colorId: colorMap["Silver Grey"],
             paintId: paintMap["XF-4"],
             parts: 1,
           },
           // Portland Stone
           {
-            mixId: mixMap["Portland Stone"],
+            colorId: colorMap["Portland Stone"],
             paintId: paintMap["XF-2"],
             parts: 6,
           },
           {
-            mixId: mixMap["Portland Stone"],
+            colorId: colorMap["Portland Stone"],
             paintId: paintMap["XF-3"],
             parts: 1,
           },
           {
-            mixId: mixMap["Portland Stone"],
+            colorId: colorMap["Portland Stone"],
             paintId: paintMap["XF-57"],
             parts: 1,
           },
           // Light Stone
           {
-            mixId: mixMap["Light Stone"],
+            colorId: colorMap["Light Stone"],
             paintId: paintMap["XF-2"],
             parts: 7,
           },
           {
-            mixId: mixMap["Light Stone"],
+            colorId: colorMap["Light Stone"],
             paintId: paintMap["XF-3"],
             parts: 2,
           },
           {
-            mixId: mixMap["Light Stone"],
+            colorId: colorMap["Light Stone"],
             paintId: paintMap["XF-59"],
             parts: 2,
           },
           // Slate
           {
-            mixId: mixMap["Slate"],
+            colorId: colorMap["Slate"],
             paintId: paintMap["XF-24"],
             parts: 1,
           },
           {
-            mixId: mixMap["Slate"],
+            colorId: colorMap["Slate"],
             paintId: paintMap["XF-4"],
             parts: 1,
           },
         ]
 
         return Promise.all([
-          queryInterface.bulkInsert("MixesStandards", mixesStandards, {}),
-          queryInterface.bulkInsert("MixesPeriods", mixesPeriods, {}),
-          queryInterface.bulkInsert("MixesPaints", mixesPaints, {}),
+          queryInterface.bulkInsert("ColorsStandards", colorsStandards, {}),
+          queryInterface.bulkInsert("ColorsPeriods", colorsPeriods, {}),
+          queryInterface.bulkInsert("ColorsPaints", colorsPaints, {}),
         ])
       })
   },

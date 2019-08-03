@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = (sequelize, DataTypes) => {
-  const MixesPaints = sequelize.define(
-    "MixesPaints",
+  const ColorsPaints = sequelize.define(
+    "ColorsPaints",
     {
       parts: {
         type: DataTypes.INTEGER,
@@ -12,5 +12,5 @@ module.exports = (sequelize, DataTypes) => {
     { timestamps: false }
   )
 
-  return MixesPaints
+  return ColorsPaints
 }

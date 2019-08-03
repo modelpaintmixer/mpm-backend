@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   Paint.associate = function(models) {
     Paint.belongsToMany(models.Attribute, { through: "PaintsAttributes" })
     Paint.belongsToMany(models.Standard, { through: "PaintsStandards" })
-    Paint.belongsToMany(models.Mix, { through: "MixesPaints" })
+    Paint.belongsToMany(models.Color, { through: "ColorsPaints" })
     Paint.belongsTo(models.Manufacturer)
     Paint.belongsTo(models.Origin)
     Paint.hasMany(models.ProductCode)

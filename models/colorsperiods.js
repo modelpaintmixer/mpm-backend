@@ -1,11 +1,11 @@
 "use strict"
 
 module.exports = sequelize => {
-  const MixesPeriods = sequelize.define(
-    "MixesPeriods",
+  const ColorsPeriods = sequelize.define(
+    "ColorsPeriods",
     {},
     { timestamps: false }
   )
 
-  return MixesPeriods
+  return ColorsPeriods
 }

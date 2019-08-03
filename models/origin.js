@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   )
   Origin.associate = function(models) {
     Origin.hasMany(models.Manufacturer)
-    Origin.hasMany(models.Mix)
+    Origin.hasMany(models.Color)
     Origin.hasMany(models.Paint)
     Origin.hasMany(models.Standard)
   }

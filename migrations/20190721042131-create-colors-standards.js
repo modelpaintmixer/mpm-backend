@@ -2,35 +2,35 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("MixesPaints", {
-      mixId: {
+    return queryInterface.createTable("ColorsStandards", {
+      colorId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Mixes",
+          model: "Colors",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      paintId: {
+      standardId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Paints",
+          model: "Standards",
           key: "id",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      parts: {
-        type: Sequelize.INTEGER,
+      standardNumber: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
     })
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable("MixesPaints")
+    return queryInterface.dropTable("ColorsStandards")
   },
 }
