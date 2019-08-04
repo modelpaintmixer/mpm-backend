@@ -27,6 +27,14 @@ module.exports = {
       colorHsl: {
         type: Sequelize.STRING,
       },
+      transparent: {
+        type: Sequelize.BOOLEAN,
+        default: false,
+      },
+      clear: {
+        type: Sequelize.BOOLEAN,
+        default: false,
+      },
       notes: {
         type: Sequelize.TEXT,
       },

@@ -18,6 +18,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       colorRgb: DataTypes.STRING,
       colorHsl: DataTypes.STRING,
+      transparent: {
+        type: DataTypes.BOOLEAN,
+        default: false,
+      },
+      clear: {
+        type: DataTypes.BOOLEAN,
+        default: false,
+      },
       notes: DataTypes.TEXT,
     },
     {}

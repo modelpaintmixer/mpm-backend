@@ -40,7 +40,9 @@ module.exports = {
           originsMap[row.abbreviation] = row.id
         }
 
-        let lines = fs.readFileSync("seed-data/Tamiya.txt", "utf8").split(os.EOL)
+        let lines = fs
+          .readFileSync("seed-data/Tamiya.txt", "utf8")
+          .split(os.EOL)
         for (let lineRaw of lines) {
           // Skip any lines that start with "#"
           if (lineRaw === "" || lineRaw.startsWith("#")) {
@@ -63,11 +65,10 @@ module.exports = {
           newPaint["colorRgb"] = rgbColor.join(",")
           newPaint["colorHsl"] = hslColor.join(",")
           newPaint["originId"] = line[7] ? originsMap[line[7]] : null
+          newPaint["transparent"] = false
+          newPaint["clear"] = false
           newPaint["createdAt"] = NOW
           newPaint["updatedAt"] = NOW
-
-          // Save it
-          paints.push(newPaint)
 
           // Make deferred entries for product codes:
           if (line[5] !== "" && line[5] !== null) {
@@ -89,12 +90,18 @@ module.exports = {
 
           // Make deferred entries for attribute mappings
           for (let attr of line[4].split("|")) {
+            if (attr === "transparent" || attr === "clear") {
+              newPaint[attr] = true
+            }
             let newAttr = {
               paintId: line[1],
               attributeId: attributesMap[attr],
             }
             attributes.push(newAttr)
           }
+
+          // Save it
+          paints.push(newPaint)
         }
 
         // Insert the paints
