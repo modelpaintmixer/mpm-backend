@@ -37,7 +37,8 @@ router.get("/site", (req, res) => {
 })
 
 router.get("/changes/:count(\\d+)?", (req, res) => {
-  let count = req.params.count ? req.params.count : 8
+  // "+" is necessary to force count to a number for MySQL
+  let count = req.params.count ? +req.params.count : 8
 
   let colors = Color.findAll({
     limit: count,
