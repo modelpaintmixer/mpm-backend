@@ -11,4 +11,8 @@ app.use("/api", api)
 app.get("/", (req, res) => res.send("OK"))
 
 console.log("Server started")
+for (let name of ["USERNAME", "PASSWORD", "DATABASE", "HOST"]) {
+  let full = `DB_${name}`
+  console.log(`-> ${full}=${process.env[full]}`)
+}
 app.listen(port)
