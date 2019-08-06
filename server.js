@@ -8,6 +8,7 @@ const api = require("./routes/api")
 var app = express()
 app.use(helmet())
 app.use("/api", api)
+app.get("/", (req, res) => res.send("OK"))
 
 console.log("Server started")
 app.listen(port)
