@@ -11,6 +11,7 @@ const attribute = require("./attribute")
 const color = require("./color")
 const period = require("./period")
 const standard = require("./standard")
+const origin = require("./origin")
 const view = require("./view")
 
 let router = express.Router()
@@ -23,6 +24,7 @@ router.use("/attribute", attribute)
 router.use("/color", color)
 router.use("/period", period)
 router.use("/standard", standard)
+router.use("/origin", origin)
 router.use("/view", view)
 
 module.exports = router
