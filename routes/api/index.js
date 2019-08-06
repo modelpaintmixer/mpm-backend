@@ -9,6 +9,8 @@ const paint = require("./paint")
 const manufacturer = require("./manufacturer")
 const attribute = require("./attribute")
 const color = require("./color")
+const period = require("./period")
+const standard = require("./standard")
 const view = require("./view")
 
 let router = express.Router()
@@ -19,6 +21,8 @@ router.use("/paint", paint)
 router.use("/manufacturer", manufacturer)
 router.use("/attribute", attribute)
 router.use("/color", color)
+router.use("/period", period)
+router.use("/standard", standard)
 router.use("/view", view)
 
 module.exports = router
