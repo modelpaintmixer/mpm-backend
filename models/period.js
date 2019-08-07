@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
+      fromYear: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      toYear: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       notes: DataTypes.TEXT,
     },
     { timestamps: false }
