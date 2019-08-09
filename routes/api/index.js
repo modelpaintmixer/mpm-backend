@@ -13,6 +13,7 @@ const period = require("./period")
 const standard = require("./standard")
 const origin = require("./origin")
 const view = require("./view")
+const topn = require("./topn")
 
 let router = express.Router()
 router.use(cors())
@@ -26,5 +27,6 @@ router.use("/period", period)
 router.use("/standard", standard)
 router.use("/origin", origin)
 router.use("/view", view)
+router.use("/topn", topn)
 
 module.exports = router
