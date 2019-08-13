@@ -1,14 +1,19 @@
 {
   "name": "mpm-backend",
   "version": "0.0.1",
-  "description": "",
+  "description": "Backend for ModelPaintMixer.com",
+  "author": "Randy J. Ray <modelpaint@modelpaintmixer.com> (https://www.modelpaintmixer.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modelpaintmixer/mpm-backend.git"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "develop": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
