@@ -42,12 +42,12 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
 
   let colors = Color.findAll({
     limit: count,
-    order: [["updatedAt", "DESC"]],
+    order: [["updatedAt", "DESC"], "name"],
   })
   let paints = Paint.findAll({
     include: [Manufacturer],
     limit: count,
-    order: [["updatedAt", "DESC"]],
+    order: [["updatedAt", "DESC"], "name"],
   })
   let images = Image.findAll({
     limit: count,
@@ -55,7 +55,7 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
   })
   let mfrs = Manufacturer.findAll({
     limit: count,
-    order: [["updatedAt", "DESC"]],
+    order: [["updatedAt", "DESC"], "fullName"],
   })
 
   Promise.all([mfrs, colors, images, paints]).then(values => {
