@@ -20,7 +20,7 @@ module.exports = {
           [
             {
               fullName: "Tamiya, Inc.",
-              showName: "Tamiya",
+              name: "Tamiya",
               originId: originsMap["JP"],
               createdAt: date,
               updatedAt: date,

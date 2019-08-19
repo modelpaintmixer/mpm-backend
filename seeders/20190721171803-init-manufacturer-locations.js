@@ -7,7 +7,7 @@ module.exports = {
 
     return sequelize
       .query(
-        "SELECT id FROM Manufacturers WHERE showName = 'Tamiya' LIMIT 1;",
+        "SELECT id FROM Manufacturers WHERE name = 'Tamiya' LIMIT 1;",
         {
           type: sequelize.QueryTypes.SELECT,
         }

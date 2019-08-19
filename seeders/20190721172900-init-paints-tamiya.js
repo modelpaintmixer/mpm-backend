@@ -16,7 +16,7 @@ module.exports = {
     const sequelize = queryInterface.sequelize
 
     return sequelize
-      .query("SELECT id FROM Manufacturers WHERE showName = 'Tamiya';", {
+      .query("SELECT id FROM Manufacturers WHERE name = 'Tamiya';", {
         type: sequelize.QueryTypes.SELECT,
       })
       .then(results => {
@@ -145,7 +145,7 @@ module.exports = {
     const sequelize = queryInterface.sequelize
 
     return sequelize
-      .query("SELECT id FROM Manufacturers WHERE showName = 'Tamiya';", {
+      .query("SELECT id FROM Manufacturers WHERE name = 'Tamiya';", {
         type: sequelize.QueryTypes.SELECT,
       })
       .then(results => {

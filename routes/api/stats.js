@@ -74,7 +74,7 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
           ...item.get(),
         }
         if (type === "Paint") {
-          obj.manufacturer = obj.Manufacturer.showName
+          obj.manufacturer = obj.Manufacturer.name
           delete obj.Manufacturer
         }
 

@@ -86,7 +86,7 @@ router.get("/color/:id", (req, res) => {
         part = part.get()
         part.parts = part.ColorsPaints.parts
         delete part.ColorsPaints
-        part.manufacturer = part.Manufacturer.showName
+        part.manufacturer = part.Manufacturer.name
         delete part.Manufacturer
         return part
       })
@@ -121,7 +121,7 @@ router.get("/origin/:id", (req, res) => {
       })
       origin.Paints = paints.map(paint => {
         paint = paint.get()
-        paint.manufacturer = paint.Manufacturer.showName
+        paint.manufacturer = paint.Manufacturer.name
         delete paint.Manufacturer
         return paint
       })
@@ -191,7 +191,7 @@ router.get("/standard/:id", (req, res) => {
         paint = paint.get()
         paint.standardNumber = paint.PaintsStandards.standardNumber
         delete paint.PaintsStandards
-        paint.manufacturer = paint.Manufacturer.showName
+        paint.manufacturer = paint.Manufacturer.name
         delete paint.Manufacturer
         return paint
       })
@@ -244,7 +244,7 @@ router.get("/attribute/:id", (req, res) => {
       attribute = attribute.get()
       attribute.Paints = paints.map(paint => {
         paint = paint.get()
-        paint.manufacturer = paint.Manufacturer.showName
+        paint.manufacturer = paint.Manufacturer.name
         delete paint.Manufacturer
         delete paint.PaintsAttributes
         return paint
