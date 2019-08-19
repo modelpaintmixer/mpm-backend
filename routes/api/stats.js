@@ -10,6 +10,7 @@ const {
   Manufacturer,
   Color,
   Image,
+  NewsItem,
 } = require("../../models")
 
 let router = express.Router()
@@ -40,6 +41,10 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
   // "+" is necessary to force count to a number for MySQL
   let count = req.params.count ? +req.params.count : 8
 
+  let newsitems = NewsItem.findAll({
+    limit: count,
+    order: [["updatedAt", "DESC"], ["createdAt", "DESC"]],
+  })
   let colors = Color.findAll({
     limit: count,
     order: [["updatedAt", "DESC"], "name"],
@@ -58,7 +63,7 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
     order: [["updatedAt", "DESC"], "fullName"],
   })
 
-  Promise.all([mfrs, colors, images, paints]).then(values => {
+  Promise.all([newsitems, mfrs, colors, images, paints]).then(values => {
     let all = []
 
     for (let value of values) {
@@ -76,6 +81,8 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
         if (type === "Paint") {
           obj.manufacturer = obj.Manufacturer.name
           delete obj.Manufacturer
+        } else if (type === "NewsItem") {
+          delete obj.content
         }
 
         all.push(obj)
