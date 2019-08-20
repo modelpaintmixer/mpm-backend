@@ -29,8 +29,8 @@ router.get("/:id(\\d+)?", (req, res) => {
   }
 
   Manufacturer.findAll(queryOpts).then(results => {
-    let mfrs = results.map(item => item.get())
-    res.send({ manufacturers: mfrs, timestamp: Date.now() })
+    let manufacturers = results.map(item => item.get())
+    res.send({ manufacturers, timestamp: Date.now() })
   })
 })
 
@@ -40,7 +40,7 @@ router.get("/:id/paints", (req, res) => {
   Manufacturer.findByPk(id).then(mfr => {
     mfr.getPaints({ order: ["id"] }).then(results => {
       let paints = results.map(item => item.get())
-      res.send({ paints: paints, timestamp: Date.now() })
+      res.send({ paints, timestamp: Date.now() })
     })
   })
 })

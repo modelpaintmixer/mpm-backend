@@ -25,7 +25,7 @@ router.get("/color/:count(\\d+)?", (req, res) => {
       }
     })
 
-    res.send({ topn: topn, timestamp: Date.now() })
+    res.send({ topn, timestamp: Date.now() })
   })
 })
 
@@ -60,7 +60,7 @@ router.get("/period/:count(\\d+)?", (req, res) => {
 
       return item
     })
-    res.send({ topn: topn, timestamp: Date.now() })
+    res.send({ topn, timestamp: Date.now() })
   })
 })
 
@@ -101,7 +101,7 @@ router.get("/origin/:count(\\d+)?", (req, res) => {
 
       return item
     })
-    res.send({ topn: topn, timestamp: Date.now() })
+    res.send({ topn, timestamp: Date.now() })
   })
 })
 

@@ -24,7 +24,7 @@ router.get("/:id(\\d+)?", (req, res) => {
 
   Period.findAll(queryOpts).then(results => {
     let periods = results.map(item => item.get())
-    res.send({ periods: periods, timestamp: Date.now() })
+    res.send({ periods, timestamp: Date.now() })
   })
 })
 
@@ -38,7 +38,7 @@ router.get("/:id/standards", (req, res) => {
         delete item.PeriodsStandards
         return item
       })
-      res.send({ standards: standards, timestamp: Date.now() })
+      res.send({ standards, timestamp: Date.now() })
     })
   })
 })

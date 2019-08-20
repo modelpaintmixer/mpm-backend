@@ -35,7 +35,7 @@ router.get("/:id(\\d+)?", (req, res) => {
 
   Paint.findAll(queryOpts).then(results => {
     let paints = results.map(item => item.get())
-    res.send({ paints: paints, timestamp: Date.now() })
+    res.send({ paints, timestamp: Date.now() })
   })
 })
 
@@ -44,12 +44,12 @@ router.get("/:id/attributes", (req, res) => {
 
   Paint.findByPk(id).then(paint => {
     paint.getAttributes({ order: ["id"] }).then(results => {
-      let attrs = results.map(item => {
+      let attributes = results.map(item => {
         item = item.get()
         delete item.PaintsAttributes
         return item
       })
-      res.send({ attributes: attrs, timestamp: Date.now() })
+      res.send({ attributes, timestamp: Date.now() })
     })
   })
 })

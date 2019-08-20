@@ -13,6 +13,7 @@ const {
   Period,
   Standard,
   Attribute,
+  sequelize,
 } = require("../../models")
 
 let router = express.Router()
@@ -51,7 +52,7 @@ router.get("/paint/:id", (req, res) => {
         return color
       })
 
-      res.send({ paint: paint, timestamp: Date.now() })
+      res.send({ paint, timestamp: Date.now() })
     })
 })
 
@@ -91,7 +92,7 @@ router.get("/color/:id", (req, res) => {
         return part
       })
 
-      res.send({ color: color, timestamp: Date.now() })
+      res.send({ color, timestamp: Date.now() })
     })
 })
 
@@ -126,7 +127,7 @@ router.get("/origin/:id", (req, res) => {
         return paint
       })
 
-      res.send({ origin: origin, timestamp: Date.now() })
+      res.send({ origin, timestamp: Date.now() })
     })
 })
 
@@ -156,7 +157,7 @@ router.get("/period/:id", (req, res) => {
         return color
       })
 
-      res.send({ period: period, timestamp: Date.now() })
+      res.send({ period, timestamp: Date.now() })
     })
 })
 
@@ -196,7 +197,7 @@ router.get("/standard/:id", (req, res) => {
         return paint
       })
 
-      res.send({ standard: standard, timestamp: Date.now() })
+      res.send({ standard, timestamp: Date.now() })
     })
 })
 
@@ -226,8 +227,34 @@ router.get("/manufacturer/:id", (req, res) => {
         return paint
       })
 
-      res.send({ manufacturer: manufacturer, timestamp: Date.now() })
+      res.send({ manufacturer, timestamp: Date.now() })
     })
+})
+
+router.get("/manufacturers", (req, res) => {
+  let query = `
+    SELECT m.id                 AS id,
+          m.name               AS name,
+          m.fullName           AS fullName,
+          m.notes              AS notes,
+          o.name               AS origin,
+          COALESCE(p_count, 0) AS paint_count
+    FROM   Manufacturers m
+          LEFT JOIN Origins o ON m.originId = o.id
+          LEFT OUTER JOIN (SELECT manufacturerId,
+                    COUNT(*) AS p_count
+                            FROM   Paints
+                            GROUP  BY manufacturerId) AS p
+                        ON p.manufacturerId = m.id
+    ORDER BY m.fullName
+  `
+  let options = {
+    type: sequelize.QueryTypes.SELECT,
+  }
+
+  sequelize.query(query, options).then(manufacturers => {
+    res.send({ manufacturers, timestamp: Date.now() })
+  })
 })
 
 router.get("/attribute/:id", (req, res) => {
@@ -250,8 +277,31 @@ router.get("/attribute/:id", (req, res) => {
         return paint
       })
 
-      res.send({ attribute: attribute, timestamp: Date.now() })
+      res.send({ attribute, timestamp: Date.now() })
     })
+})
+
+router.get("/attributes", (req, res) => {
+  let query = `
+    SELECT a.id                 AS id,
+           a.name               AS name,
+           a.description        AS description,
+           COALESCE(p_count, 0) AS paint_count
+    FROM   Attributes a
+           LEFT OUTER JOIN (SELECT attributeId,
+                                   COUNT(*) AS p_count
+                            FROM   PaintsAttributes
+                            GROUP  BY attributeId) as pa
+                        ON pa.attributeId = a.id
+    ORDER BY name
+  `
+  let options = {
+    type: sequelize.QueryTypes.SELECT,
+  }
+
+  sequelize.query(query, options).then(attributes => {
+    res.send({ attributes, timestamp: Date.now() })
+  })
 })
 
 module.exports = router

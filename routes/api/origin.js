@@ -32,7 +32,7 @@ router.get("/:id(\\d+)?", (req, res) => {
 
   Origin.findAll(queryOpts).then(results => {
     let origins = results.map(item => item.get())
-    res.send({ origins: origins, timestamp: Date.now() })
+    res.send({ origins, timestamp: Date.now() })
   })
 })
 

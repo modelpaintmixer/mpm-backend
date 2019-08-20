@@ -33,7 +33,7 @@ router.get("/site", (req, res) => {
       images: values[5],
     }
 
-    res.json({ stats: stats, timestamp: Date.now() })
+    res.json({ stats, timestamp: Date.now() })
   })
 })
 
@@ -74,8 +74,8 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
             : "update"
         let type = item.constructor.name
         let obj = {
-          type: type,
-          action: action,
+          type,
+          action,
           ...item.get(),
         }
         if (type === "Paint") {

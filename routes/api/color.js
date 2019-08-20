@@ -25,7 +25,7 @@ router.get("/:id(\\d+)?", (req, res) => {
 
   Color.findAll(queryOpts).then(results => {
     let colors = results.map(item => item.get())
-    res.send({ colors: colors, timestamp: Date.now() })
+    res.send({ colors, timestamp: Date.now() })
   })
 })
 
@@ -39,7 +39,7 @@ router.get("/:id/periods", (req, res) => {
         delete item.ColorsPeriods
         return item
       })
-      res.send({ periods: periods, timestamp: Date.now() })
+      res.send({ periods, timestamp: Date.now() })
     })
   })
 })
@@ -54,7 +54,7 @@ router.get("/:id/standards", (req, res) => {
         delete item.PeriodsStandards
         return item
       })
-      res.send({ standards: standards, timestamp: Date.now() })
+      res.send({ standards, timestamp: Date.now() })
     })
   })
 })
@@ -70,7 +70,7 @@ router.get("/:id/parts", (req, res) => {
         delete part.ColorsPaints
         return part
       })
-      res.send({ parts: parts, timestamp: Date.now() })
+      res.send({ parts, timestamp: Date.now() })
     })
   })
 })

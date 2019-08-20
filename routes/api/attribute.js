@@ -23,8 +23,8 @@ router.get("/:id(\\d+)?", (req, res) => {
   }
 
   Attribute.findAll(queryOpts).then(results => {
-    let attrs = results.map(item => item.get())
-    res.send({ attributes: attrs, timestamp: Date.now() })
+    let attributes = results.map(item => item.get())
+    res.send({ attributes, timestamp: Date.now() })
   })
 })
 
@@ -38,7 +38,7 @@ router.get("/:id/paints", (req, res) => {
         delete item.PaintsAttributes
         return item
       })
-      res.send({ paints: paints, timestamp: Date.now() })
+      res.send({ paints, timestamp: Date.now() })
     })
   })
 })
