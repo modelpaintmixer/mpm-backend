@@ -21,13 +21,13 @@ module.exports = {
               name: "Army-Navy Aeronautical",
               displayName: "ANA ",
               abbreviation: "ANA",
-              originId: originsMap["USA"],
+              originId: originsMap["US"],
             },
             {
               name: "Federal Standard 595c",
               displayName: "FS",
               abbreviation: "FS",
-              originId: originsMap["USA"],
+              originId: originsMap["US"],
             },
             {
               name: "RAL Classic",

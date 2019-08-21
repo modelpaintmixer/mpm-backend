@@ -19,15 +19,15 @@ module.exports = {
         },
         {
           name: "gloss",
-          description: "Has a completely gloss finish",
+          description: "A completely gloss finish",
         },
         {
           name: "flat",
-          description: "Has a completely matte/flat finish",
+          description: "A completely matte/flat finish",
         },
         {
           name: "satin",
-          description: "Has a semi-gloss or satin finish",
+          description: "A semi-gloss or satin finish",
         },
         {
           name: "transparent",

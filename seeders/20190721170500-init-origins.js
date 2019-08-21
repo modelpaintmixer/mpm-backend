@@ -11,7 +11,7 @@ module.exports = {
         },
         {
           name: "United States of America",
-          abbreviation: "USA",
+          abbreviation: "US",
         },
         {
           name: "United Kingdom",
