@@ -3,6 +3,8 @@
  */
 
 const express = require("express")
+const datefns = require("date-fns")
+
 const {
   Period,
   Standard,
@@ -89,10 +91,7 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
       }
     }
 
-    all.sort((a, b) => {
-      return a.updatedAt < b.updatedAt ? 1 : a.updatedAt > b.updatedAt ? -1 : 0
-    })
-
+    all.sort((a, b) => datefns.compareDesc(a.updatedAt, b.updatedAt))
     res.send({ changes: all.slice(0, count), timestamp: Date.now() })
   })
 })
