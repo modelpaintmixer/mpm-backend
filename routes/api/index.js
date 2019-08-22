@@ -4,6 +4,8 @@
 
 const express = require("express")
 const cors = require("cors")
+
+const sitecookie = require("./sitecookie")
 const stats = require("./stats")
 const paint = require("./paint")
 const manufacturer = require("./manufacturer")
@@ -18,6 +20,7 @@ const topn = require("./topn")
 let router = express.Router()
 router.use(cors())
 
+router.use("/sitecookie", sitecookie)
 router.use("/stats", stats)
 router.use("/paint", paint)
 router.use("/manufacturer", manufacturer)
