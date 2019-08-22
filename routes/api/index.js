@@ -16,6 +16,7 @@ const standard = require("./standard")
 const origin = require("./origin")
 const view = require("./view")
 const topn = require("./topn")
+const newsitem = require("./newsitem")
 
 let router = express.Router()
 router.use(cors())
@@ -31,5 +32,6 @@ router.use("/standard", standard)
 router.use("/origin", origin)
 router.use("/view", view)
 router.use("/topn", topn)
+router.use("/newsitem", newsitem)
 
 module.exports = router
