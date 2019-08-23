@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       needed: {
         type: DataTypes.BOOLEAN,
+        default: true,
       },
       duration: {
         type: DataTypes.STRING,
@@ -18,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
+      },
+      inUse: {
+        type: DataTypes.BOOLEAN,
+        default: true,
       },
     },
     {}
