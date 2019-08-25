@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      owner: {
-        type: DataTypes.INTEGER,
-        // allowNull: false,
-      },
       credit: DataTypes.STRING,
       colorHex: {
         type: DataTypes.STRING,
@@ -19,19 +15,17 @@ module.exports = (sequelize, DataTypes) => {
       },
       colorRgb: DataTypes.STRING,
       colorHsl: DataTypes.STRING,
-      swatchType: DataTypes.STRING,
-      swatchValue: DataTypes.INTEGER,
-      description: DataTypes.TEXT,
+      description: DataTypes.STRING(512),
       notes: DataTypes.TEXT,
     },
     {}
   )
-  Color.associate = function(models) {
+  Color.associate = models => {
     Color.belongsToMany(models.Standard, { through: "ColorsStandards" })
     Color.belongsToMany(models.Period, { through: "ColorsPeriods" })
     Color.belongsToMany(models.Paint, { through: "ColorsPaints" })
     Color.belongsTo(models.Origin)
-    Color.hasMany(models.Image)
+    Color.belongsTo(models.User)
   }
 
   return Color

@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   )
+  NewsItem.associate = function(models) {
+    NewsItem.belongsTo(models.User)
+  }
 
   return NewsItem
 }

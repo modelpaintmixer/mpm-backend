@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   )
   Image.associate = function(models) {
-    Image.belongsTo(models.Color)
+    Image.belongsTo(models.User)
   }
 
   return Image
