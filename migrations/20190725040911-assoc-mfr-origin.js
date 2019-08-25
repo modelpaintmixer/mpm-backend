@@ -4,6 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.addColumn("Manufacturers", "originId", {
       type: Sequelize.INTEGER,
+      allowNull: false,
       references: {
         model: "Origins",
         key: "id",

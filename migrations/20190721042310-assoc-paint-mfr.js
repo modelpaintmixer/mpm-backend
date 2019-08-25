@@ -5,6 +5,7 @@ module.exports = {
     return queryInterface
       .addColumn("Paints", "manufacturerId", {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "Manufacturers",
           key: "id",
