@@ -13,10 +13,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      owner: {
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-      },
       credit: {
         type: Sequelize.STRING,
       },
@@ -30,14 +26,8 @@ module.exports = {
       colorHsl: {
         type: Sequelize.STRING,
       },
-      swatchType: {
-        type: Sequelize.STRING,
-      },
-      swatchValue: {
-        type: Sequelize.INTEGER,
-      },
       description: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING(512),
       },
       notes: {
         type: Sequelize.TEXT,
