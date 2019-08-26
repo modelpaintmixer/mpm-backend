@@ -5,6 +5,7 @@
 const express = require("express")
 
 const {
+  User,
   Paint,
   Manufacturer,
   Origin,
@@ -60,7 +61,7 @@ router.get("/color/:id", (req, res) => {
   let id = req.params.id
   let color
 
-  Color.findByPk(id, { include: [Origin] })
+  Color.findByPk(id, { include: [Origin, User] })
     .then(result => {
       color = result
 
