@@ -40,6 +40,7 @@ module.exports = {
 
         let colors = [
           {
+            userId: 1,
             name: "Khaki Green no. 3",
             credit: "Mike Starmer",
             originId: originMap["UK"],
@@ -47,6 +48,7 @@ module.exports = {
             updatedAt: now,
           },
           {
+            userId: 1,
             name: "Silver Grey",
             credit: "Mike Starmer",
             originId: originMap["UK"],
@@ -54,6 +56,7 @@ module.exports = {
             updatedAt: now,
           },
           {
+            userId: 1,
             name: "Portland Stone",
             credit: "Mike Starmer",
             originId: originMap["UK"],
@@ -61,6 +64,7 @@ module.exports = {
             updatedAt: now,
           },
           {
+            userId: 1,
             name: "Light Stone",
             credit: "Mike Starmer",
             originId: originMap["UK"],
@@ -68,6 +72,7 @@ module.exports = {
             updatedAt: now,
           },
           {
+            userId: 1,
             name: "Slate",
             credit: "Mike Starmer",
             originId: originMap["UK"],
