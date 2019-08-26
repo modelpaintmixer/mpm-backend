@@ -2,15 +2,22 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn("ManufacturerLocations", "manufacturerId", {
-      type: Sequelize.INTEGER,
-      references: {
-        model: "Manufacturers",
-        key: "id",
-      },
-      onUpdate: "CASCADE",
-      onDelete: "CASCADE",
-    })
+    return queryInterface
+      .addColumn("ManufacturerLocations", "manufacturerId", {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Manufacturers",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      })
+      .then(() => {
+        queryInterface.changeColumn("ManufacturerLocations", "manufacturerId", {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        })
+      })
   },
 
   down: queryInterface => {

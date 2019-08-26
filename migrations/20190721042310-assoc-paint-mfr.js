@@ -13,6 +13,12 @@ module.exports = {
         onDelete: "CASCADE",
       })
       .then(() => {
+        queryInterface.changeColumn("Paints", "manufacturerId", {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        })
+      })
+      .then(() => {
         return queryInterface.addIndex("Paints", {
           fields: ["manufacturerId", "name", "partNumber"],
           name: "paints_mid_name_part",
