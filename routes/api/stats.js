@@ -88,6 +88,12 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
           delete obj.Manufacturer
         } else if (type === "NewsItem") {
           delete obj.content
+          let user = obj.User
+          obj.User = {
+            id: user.id,
+            username: user.username,
+            name: user.name,
+          }
         } else if (type === "Color") {
           let user = obj.User
           obj.User = {
