@@ -6,6 +6,7 @@ const express = require("express")
 const datefns = require("date-fns")
 
 const {
+  User,
   Period,
   Standard,
   Paint,
@@ -44,10 +45,12 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
   let count = req.params.count ? +req.params.count : 8
 
   let newsitems = NewsItem.findAll({
+    include: [User],
     limit: count,
     order: [["updatedAt", "DESC"], ["createdAt", "DESC"]],
   })
   let colors = Color.findAll({
+    include: [User],
     limit: count,
     order: [["updatedAt", "DESC"], "name"],
   })
@@ -85,6 +88,13 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
           delete obj.Manufacturer
         } else if (type === "NewsItem") {
           delete obj.content
+        } else if (type === "Color") {
+          let user = obj.User
+          obj.User = {
+            id: user.id,
+            username: user.username,
+            name: user.name,
+          }
         }
 
         all.push(obj)
