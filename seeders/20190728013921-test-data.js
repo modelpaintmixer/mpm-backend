@@ -8,7 +8,7 @@ module.exports = {
     let standardMap = {}
     let paintMap = {}
     let colorMap = {}
-    let now = new Date()
+    let date = new Date("2019-08-28T20:35:31.826Z")
 
     return Promise.all([
       sequelize.query("SELECT id, abbreviation FROM Origins;", {
@@ -44,40 +44,40 @@ module.exports = {
             name: "Khaki Green no. 3",
             credit: "Mike Starmer",
             originId: originMap["UK"],
-            createdAt: now,
-            updatedAt: now,
+            createdAt: date,
+            updatedAt: date,
           },
           {
             userId: 1,
             name: "Silver Grey",
             credit: "Mike Starmer",
             originId: originMap["UK"],
-            createdAt: now,
-            updatedAt: now,
+            createdAt: date,
+            updatedAt: date,
           },
           {
             userId: 1,
             name: "Portland Stone",
             credit: "Mike Starmer",
             originId: originMap["UK"],
-            createdAt: now,
-            updatedAt: now,
+            createdAt: date,
+            updatedAt: date,
           },
           {
             userId: 1,
             name: "Light Stone",
             credit: "Mike Starmer",
             originId: originMap["UK"],
-            createdAt: now,
-            updatedAt: now,
+            createdAt: date,
+            updatedAt: date,
           },
           {
             userId: 1,
             name: "Slate",
             credit: "Mike Starmer",
             originId: originMap["UK"],
-            createdAt: now,
-            updatedAt: now,
+            createdAt: date,
+            updatedAt: date,
           },
         ]
         return queryInterface.bulkInsert("Colors", colors, {})

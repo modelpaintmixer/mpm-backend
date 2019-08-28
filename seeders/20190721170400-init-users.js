@@ -2,7 +2,7 @@
 
 module.exports = {
   up: queryInterface => {
-    let date = new Date()
+    let date = new Date("2019-08-28T20:16:23.059Z")
 
     return queryInterface.bulkInsert("Users", [
       {

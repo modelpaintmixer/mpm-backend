@@ -3,15 +3,12 @@
 module.exports = {
   up: queryInterface => {
     const sequelize = queryInterface.sequelize
-    let date = new Date()
+    let date = new Date("2019-08-28T20:25:43.669Z")
 
     return sequelize
-      .query(
-        "SELECT id FROM Manufacturers WHERE name = 'Tamiya' LIMIT 1;",
-        {
-          type: sequelize.QueryTypes.SELECT,
-        }
-      )
+      .query("SELECT id FROM Manufacturers WHERE name = 'Tamiya' LIMIT 1;", {
+        type: sequelize.QueryTypes.SELECT,
+      })
       .then(results => {
         const tamiyaId = results[0].id
 

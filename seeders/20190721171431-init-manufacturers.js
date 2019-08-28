@@ -2,7 +2,7 @@
 
 module.exports = {
   up: queryInterface => {
-    let date = new Date()
+    let date = new Date("2019-08-28T20:24:43.669Z")
     let originsMap = {}
     const sequelize = queryInterface.sequelize
 

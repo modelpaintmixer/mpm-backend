@@ -1,6 +1,6 @@
 "use strict"
 
-const NOW = new Date()
+const date = new Date("2019-08-28T20:27:21.031Z")
 const fs = require("fs")
 const os = require("os")
 const { hexToRgb, rgbToHsl } = require("../lib/colors")
@@ -67,8 +67,8 @@ module.exports = {
           newPaint["originId"] = line[7] ? originsMap[line[7]] : null
           newPaint["transparent"] = false
           newPaint["clear"] = false
-          newPaint["createdAt"] = NOW
-          newPaint["updatedAt"] = NOW
+          newPaint["createdAt"] = date
+          newPaint["updatedAt"] = date
 
           // Make deferred entries for product codes:
           if (line[5] !== "" && line[5] !== null) {
