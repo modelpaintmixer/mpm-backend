@@ -5,6 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert("NewsItems", [
       {
         headline: "We now have a news system",
+        slug: "We now have a news system".replace(/[^\w]/g, ""),
         content: `As of Labor Day weekend, we have a simple news/events
 reporting system. These will appear in the "**Newest Changes**" streams,
 interspersed with other new items.`,
