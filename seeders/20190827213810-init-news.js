@@ -10,8 +10,8 @@ module.exports = {
 reporting system. These will appear in the "**Newest Changes**" streams,
 interspersed with other new items.`,
         userId: 1,
-        createdAt: new Date("2019-08-28T20:44:09.914Z"),
-        updatedAt: new Date("2019-08-28T20:44:09.914Z"),
+        createdAt: new Date("2019-08-31T20:13:30.887Z"),
+        updatedAt: new Date("2019-08-31T20:13:30.887Z"),
       },
     ])
   },
