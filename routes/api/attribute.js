@@ -28,18 +28,26 @@ router.get("/:id(\\d+)?", (req, res) => {
   })
 })
 
-router.get("/:id/paints", (req, res) => {
+router.get("/:id(\\d+)/paints", (req, res) => {
   let id = req.params.id
 
   Attribute.findByPk(id).then(attr => {
-    attr.getPaints({ order: ["id"] }).then(results => {
-      let paints = results.map(item => {
-        item = item.get()
-        delete item.PaintsAttributes
-        return item
+    if (attr) {
+      attr.getPaints({ order: ["id"] }).then(results => {
+        let paints = results.map(item => {
+          item = item.get()
+          delete item.PaintsAttributes
+          return item
+        })
+        res.send({ paints, timestamp: Date.now() })
       })
-      res.send({ paints, timestamp: Date.now() })
-    })
+    } else {
+      let error = {
+        message: `No attribute with id "${id}" found`,
+      }
+
+      res.send({ error })
+    }
   })
 })
 

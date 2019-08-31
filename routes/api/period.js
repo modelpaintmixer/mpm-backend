@@ -28,18 +28,26 @@ router.get("/:id(\\d+)?", (req, res) => {
   })
 })
 
-router.get("/:id/standards", (req, res) => {
+router.get("/:id(\\d+)/standards", (req, res) => {
   let id = req.params.id
 
   Period.findByPk(id).then(period => {
-    period.getStandards({ order: ["id"] }).then(results => {
-      let standards = results.map(item => {
-        item = item.get()
-        delete item.PeriodsStandards
-        return item
+    if (period) {
+      period.getStandards({ order: ["id"] }).then(results => {
+        let standards = results.map(item => {
+          item = item.get()
+          delete item.PeriodsStandards
+          return item
+        })
+        res.send({ standards, timestamp: Date.now() })
       })
-      res.send({ standards, timestamp: Date.now() })
-    })
+    } else {
+      let error = {
+        message: `No period with id "${id}" found`,
+      }
+
+      res.send({ error })
+    }
   })
 })
 

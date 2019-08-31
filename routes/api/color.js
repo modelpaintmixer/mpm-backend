@@ -29,49 +29,73 @@ router.get("/:id(\\d+)?", (req, res) => {
   })
 })
 
-router.get("/:id/periods", (req, res) => {
+router.get("/:id(\\d+)/periods", (req, res) => {
   let id = req.params.id
 
   Color.findByPk(id).then(color => {
-    color.getPeriods({ order: ["id"] }).then(results => {
-      let periods = results.map(item => {
-        item = item.get()
-        delete item.ColorsPeriods
-        return item
+    if (color) {
+      color.getPeriods({ order: ["id"] }).then(results => {
+        let periods = results.map(item => {
+          item = item.get()
+          delete item.ColorsPeriods
+          return item
+        })
+        res.send({ periods, timestamp: Date.now() })
       })
-      res.send({ periods, timestamp: Date.now() })
-    })
+    } else {
+      let error = {
+        message: `No color with id "${id}" found`,
+      }
+
+      res.send({ error })
+    }
   })
 })
 
-router.get("/:id/standards", (req, res) => {
+router.get("/:id(\\d+)/standards", (req, res) => {
   let id = req.params.id
 
   Color.findByPk(id).then(color => {
-    color.getStandards({ order: ["id"] }).then(results => {
-      let standards = results.map(item => {
-        item = item.get()
-        delete item.PeriodsStandards
-        return item
+    if (color) {
+      color.getStandards({ order: ["id"] }).then(results => {
+        let standards = results.map(item => {
+          item = item.get()
+          delete item.PeriodsStandards
+          return item
+        })
+        res.send({ standards, timestamp: Date.now() })
       })
-      res.send({ standards, timestamp: Date.now() })
-    })
+    } else {
+      let error = {
+        message: `No color with id "${id}" found`,
+      }
+
+      res.send({ error })
+    }
   })
 })
 
-router.get("/:id/parts", (req, res) => {
+router.get("/:id(\\d+)/parts", (req, res) => {
   let id = req.params.id
 
   Color.findByPk(id).then(color => {
-    color.getPaints({ order: ["id"] }).then(results => {
-      let parts = results.map(part => {
-        part = part.get()
-        part.parts = part.ColorsPaints.parts
-        delete part.ColorsPaints
-        return part
+    if (color) {
+      color.getPaints({ order: ["id"] }).then(results => {
+        let parts = results.map(part => {
+          part = part.get()
+          part.parts = part.ColorsPaints.parts
+          delete part.ColorsPaints
+          return part
+        })
+        res.send({ parts, timestamp: Date.now() })
       })
-      res.send({ parts, timestamp: Date.now() })
-    })
+    } else {
+      let error = {
+        message: `No color with id "${id}" found`,
+      }
+
+      res.send({ error })
+    }
   })
 })
 

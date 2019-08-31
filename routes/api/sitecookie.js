@@ -30,7 +30,11 @@ router.get("/:id", (req, res) => {
       let sitecookie = result.get()
       res.send({ sitecookie, timestamp: Date.now() })
     } else {
-      res.send({ error: "No cookie found for that ID" })
+      let error = {
+        message: `No cookie found for that ID/name (${value})`,
+      }
+
+      res.send({ error })
     }
   })
 })

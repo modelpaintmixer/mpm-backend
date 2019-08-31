@@ -17,13 +17,21 @@ router.get("/", (req, res) => {
   )
 })
 
-router.get("/:id", (req, res) => {
+router.get("/:id(\\d+)", (req, res) => {
   let id = req.params.id
 
   NewsItem.findByPk(id, { include: [User] }).then(newsitem => {
-    newsitem = newsitem.get()
+    if (newsitem) {
+      newsitem = newsitem.get()
 
-    res.send({ newsitem, timestamp: Date.now() })
+      res.send({ newsitem, timestamp: Date.now() })
+    } else {
+      let error = {
+        message: `No news item with id "${id}" found`,
+      }
+
+      res.send({ error })
+    }
   })
 })
 

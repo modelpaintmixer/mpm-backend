@@ -34,14 +34,22 @@ router.get("/:id(\\d+)?", (req, res) => {
   })
 })
 
-router.get("/:id/paints", (req, res) => {
+router.get("/:id(\\d+)/paints", (req, res) => {
   let id = req.params.id
 
   Manufacturer.findByPk(id).then(mfr => {
-    mfr.getPaints({ order: ["id"] }).then(results => {
-      let paints = results.map(item => item.get())
-      res.send({ paints, timestamp: Date.now() })
-    })
+    if (mfr) {
+      mfr.getPaints({ order: ["id"] }).then(results => {
+        let paints = results.map(item => item.get())
+        res.send({ paints, timestamp: Date.now() })
+      })
+    } else {
+      let error = {
+        message: `No manufacturer with id "${id}" found`,
+      }
+
+      res.send({ error })
+    }
   })
 })
 
