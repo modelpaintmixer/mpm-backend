@@ -14,6 +14,14 @@ module.exports = {
         createdAt: date,
         updatedAt: date,
       },
+      {
+        id: 2,
+        username: "rjray",
+        name: "Randy J. Ray",
+        email: "rjray@blackperl.com",
+        createdAt: date,
+        updatedAt: date,
+      },
     ])
   },
 
