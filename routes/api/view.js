@@ -305,4 +305,22 @@ router.get("/attributes", (req, res) => {
   })
 })
 
+router.get("/user/:id", (req, res) => {
+  let id = req.params.id
+  let query = { include: [Color], where: {} }
+  let user
+
+  if (id.match(/^\d+/)) {
+    query.where.id = id
+  } else {
+    query.where.username = id
+  }
+
+  User.findOne(query).then(result => {
+    user = result.get()
+
+    res.send({ user, timestamp: Date.now() })
+  })
+})
+
 module.exports = router
