@@ -49,7 +49,7 @@ Tamiya,XF-17,Sea Blue,2d4261,acrylic|flat,81717,81317,
 Tamiya,XF-18,Medium Blue,1b7da0,acrylic|flat,81718,81318,
 Tamiya,XF-19,Sky Gray,c0c9c4,acrylic|flat,81719,81319,
 Tamiya,XF-20,Medium Gray,a6b5b2,acrylic|flat,81720,81320,
-Tamiya,XF-21,Sky,e2eeca,acrylic|flat,81721,81321,UK
+Tamiya,XF-21,Sky,e2eeca,acrylic|flat,81721,81321,GB
 Tamiya,XF-22,RLM Gray,4e5d62,acrylic|flat,81722,81322,DE
 Tamiya,XF-23,Light Blue,71c8d1,acrylic|flat,81723,81323,
 Tamiya,XF-24,Dark Gray,436e7e,acrylic|flat,81724,81324,
@@ -89,9 +89,9 @@ Tamiya,XF-77,IJN Gray 2,656d70,acrylic|flat,81777,,JP
 Tamiya,XF-78,Wooden Deck Tan,d2b684,acrylic|flat,81778,,
 Tamiya,XF-79,Deck Brown,784727,acrylic|flat,81779,,
 Tamiya,XF-80,British Navy Gray,bfc9c8,acrylic|flat,81780,,
-Tamiya,XF-81,Dark Green 2 RAF,3a422b,acrylic|flat,81781,,UK
-Tamiya,XF-82,Ocean Gray 2 RAF,6b7775,acrylic|flat,81782,,UK
-Tamiya,XF-83,Medium Sea Gray 2 RAF,8c9590,acrylic|flat,81783,,UK
+Tamiya,XF-81,Dark Green 2 RAF,3a422b,acrylic|flat,81781,,GB
+Tamiya,XF-82,Ocean Gray 2 RAF,6b7775,acrylic|flat,81782,,GB
+Tamiya,XF-83,Medium Sea Gray 2 RAF,8c9590,acrylic|flat,81783,,GB
 Tamiya,XF-84,Dark Iron,4d3833,acrylic|flat,81784,,
 Tamiya,XF-85,Rubber Black,261c1b,acrylic|flat,81785,,
 Tamiya,XF-86,Flat Clear,ffffff,acrylic|flat|clear,81786,,

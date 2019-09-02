@@ -45,13 +45,13 @@ module.exports = {
               name: "British Standard 381c",
               displayName: "BSc no. ",
               abbreviation: "BSc",
-              originId: originsMap["UK"],
+              originId: originsMap["GB"],
             },
             {
               name: "British Standard BS4800",
               displayName: "BS ",
               abbreviation: "BS",
-              originId: originsMap["UK"],
+              originId: originsMap["GB"],
             },
           ],
           {}
