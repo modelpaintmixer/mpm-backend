@@ -14,6 +14,10 @@ module.exports = {
     database: process.env.DB_DATABASE,
     host: process.env.DB_HOST,
     dialect: "mysql",
+    define: {
+      charset: "utf8",
+      collate: "utf8_general_ci",
+    },
     logging: false,
   },
   production: {
@@ -22,6 +26,10 @@ module.exports = {
     database: process.env.DB_DATABASE,
     host: process.env.DB_HOST,
     dialect: "mysql",
+    define: {
+      charset: "utf8",
+      collate: "utf8_general_ci",
+    },
     logging: false,
   },
 }
