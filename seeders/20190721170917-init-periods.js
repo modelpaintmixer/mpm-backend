@@ -19,7 +19,7 @@ First World War, not already covered by a more-specific period.`,
           fromYear: 1914,
           toYear: 1918,
           notes: `The **First World War** (WWI), also sometimes called
-"The Greate War" or "The War to End All Wars", was a global conflict that
+"The Great War" or "The War to End All Wars", was a global conflict that
 originated in Europe. It started on July 28, 1914, with the assassination of
 Archduke Franz Ferdinand in Sarajevo. It ended on November 11, 1918, with the
 signing of an armistice.`,
