@@ -4,28 +4,39 @@
 
 const express = require("express")
 
-const { Standard, Sequelize } = require("../../models")
-const { like } = Sequelize.Op
+const { Standard } = require("../../models")
 
 let router = express.Router()
 
-router.get("/:id(\\d+)?", (req, res) => {
-  let queryOpts = {
-    order: ["name"],
-    where: {},
-  }
-
+router.get("/:id?", (req, res) => {
   if (req.params.id) {
-    queryOpts.where.id = req.params.id
-  }
-  if (req.query.name) {
-    queryOpts.where.name = { [like]: `%${req.query.name}%` }
-  }
+    let id = req.params.id
 
-  Standard.findAll(queryOpts).then(results => {
-    let standards = results.map(item => item.get())
-    res.send({ standards, timestamp: Date.now() })
-  })
+    if (id.match(/^\d+$/)) {
+      Standard.findByPk(id).then(result => {
+        if (result) {
+          res.send({ standard: result.get() })
+        } else {
+          let error = { message: `No standard with id "${id}" found` }
+          res.send({ error })
+        }
+      })
+    } else {
+      Standard.findOne({ where: { name: id } }).then(result => {
+        if (result) {
+          res.send({ standard: result.get() })
+        } else {
+          let error = { message: `No standard with name "${id}" found` }
+          res.send({ error })
+        }
+      })
+    }
+  } else {
+    Standard.findAll({ order: ["name"] }).then(results => {
+      let standards = results.map(item => item.get())
+      res.send({ standards })
+    })
+  }
 })
 
 router.get("/:id(\\d+)/periods", (req, res) => {

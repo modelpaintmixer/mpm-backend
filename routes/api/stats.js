@@ -36,7 +36,7 @@ router.get("/site", (req, res) => {
       images: values[5],
     }
 
-    res.json({ stats, timestamp: Date.now() })
+    res.json({ stats })
   })
 })
 
@@ -108,7 +108,7 @@ router.get("/changes/:count(\\d+)?", (req, res) => {
     }
 
     all.sort((a, b) => datefns.compareDesc(a.updatedAt, b.updatedAt))
-    res.send({ changes: all.slice(0, count), timestamp: Date.now() })
+    res.send({ changes: all.slice(0, count) })
   })
 })
 

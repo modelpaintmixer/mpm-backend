@@ -4,28 +4,39 @@
 
 const express = require("express")
 
-const { Attribute, Sequelize } = require("../../models")
-const { like } = Sequelize.Op
+const { Attribute } = require("../../models")
 
 let router = express.Router()
 
-router.get("/:id(\\d+)?", (req, res) => {
-  let queryOpts = {
-    order: ["name"],
-    where: {},
-  }
-
+router.get("/:id?", (req, res) => {
   if (req.params.id) {
-    queryOpts.where.id = req.params.id
-  }
-  if (req.query.name) {
-    queryOpts.where.name = { [like]: `%${req.query.name}%` }
-  }
+    let id = req.params.id
 
-  Attribute.findAll(queryOpts).then(results => {
-    let attributes = results.map(item => item.get())
-    res.send({ attributes, timestamp: Date.now() })
-  })
+    if (id.match(/^\d+$/)) {
+      Attribute.findByPk(id).then(result => {
+        if (result) {
+          res.send({ attribute: result.get() })
+        } else {
+          let error = { message: `No attribute with id "${id}" found` }
+          res.send({ error })
+        }
+      })
+    } else {
+      Attribute.findOne({ where: { name: id } }).then(result => {
+        if (result) {
+          res.send({ attribute: result.get() })
+        } else {
+          let error = { message: `No attribute with name "${id}" found` }
+          res.send({ error })
+        }
+      })
+    }
+  } else {
+    Attribute.findAll({ order: ["name"] }).then(results => {
+      let attributes = results.map(item => item.get())
+      res.send({ attributes })
+    })
+  }
 })
 
 router.get("/:id(\\d+)/paints", (req, res) => {
@@ -39,7 +50,7 @@ router.get("/:id(\\d+)/paints", (req, res) => {
           delete item.PaintsAttributes
           return item
         })
-        res.send({ paints, timestamp: Date.now() })
+        res.send({ paints })
       })
     } else {
       let error = {

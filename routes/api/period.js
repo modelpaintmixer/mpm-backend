@@ -4,28 +4,39 @@
 
 const express = require("express")
 
-const { Period, Sequelize } = require("../../models")
-const { like } = Sequelize.Op
+const { Period } = require("../../models")
 
 let router = express.Router()
 
-router.get("/:id(\\d+)?", (req, res) => {
-  let queryOpts = {
-    order: ["name"],
-    where: {},
-  }
-
+router.get("/:id?", (req, res) => {
   if (req.params.id) {
-    queryOpts.where.id = req.params.id
-  }
-  if (req.query.name) {
-    queryOpts.where.name = { [like]: `%${req.query.name}%` }
-  }
+    let id = req.params.id
 
-  Period.findAll(queryOpts).then(results => {
-    let periods = results.map(item => item.get())
-    res.send({ periods, timestamp: Date.now() })
-  })
+    if (id.match(/^\d+$/)) {
+      Period.findByPk(id).then(result => {
+        if (result) {
+          res.send({ period: result.get() })
+        } else {
+          let error = { message: `No period with id "${id}" found` }
+          res.send({ error })
+        }
+      })
+    } else {
+      Period.findOne({ where: { name: id } }).then(result => {
+        if (result) {
+          res.send({ period: result.get() })
+        } else {
+          let error = { message: `No period with name "${id}" found` }
+          res.send({ error })
+        }
+      })
+    }
+  } else {
+    Period.findAll({ order: ["name"] }).then(results => {
+      let periods = results.map(item => item.get())
+      res.send({ periods })
+    })
+  }
 })
 
 router.get("/:id(\\d+)/standards", (req, res) => {
@@ -39,7 +50,7 @@ router.get("/:id(\\d+)/standards", (req, res) => {
           delete item.PeriodsStandards
           return item
         })
-        res.send({ standards, timestamp: Date.now() })
+        res.send({ standards })
       })
     } else {
       let error = {
