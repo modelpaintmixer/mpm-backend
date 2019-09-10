@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   NewsItem.findAll({ order: [["updatedAt", "DESC"]], include: [User] }).then(
     results => {
       let newsitems = results.map(item => item.get())
-      res.send({ newsitems, timestamp: Date.now() })
+      res.send({ newsitems })
     }
   )
 })
@@ -24,7 +24,7 @@ router.get("/:id(\\d+)", (req, res) => {
     if (newsitem) {
       newsitem = newsitem.get()
 
-      res.send({ newsitem, timestamp: Date.now() })
+      res.send({ newsitem })
     } else {
       let error = {
         message: `No news item with id "${id}" found`,

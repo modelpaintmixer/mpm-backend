@@ -4,29 +4,39 @@
 
 const express = require("express")
 
-const { Color, Origin, Sequelize } = require("../../models")
-const { like } = Sequelize.Op
+const { Color, Origin } = require("../../models")
 
 let router = express.Router()
 
-router.get("/:id(\\d+)?", (req, res) => {
-  let queryOpts = {
-    include: [Origin],
-    order: ["name"],
-    where: {},
-  }
-
+router.get("/:id?", (req, res) => {
   if (req.params.id) {
-    queryOpts.where.id = req.params.id
-  }
-  if (req.query.name) {
-    queryOpts.where.name = { [like]: `%${req.query.name}%` }
-  }
+    let id = req.params.id
 
-  Color.findAll(queryOpts).then(results => {
-    let colors = results.map(item => item.get())
-    res.send({ colors, timestamp: Date.now() })
-  })
+    if (id.match(/^\d+$/)) {
+      Color.findByPk(id, { include: [Origin] }).then(result => {
+        if (result) {
+          res.send({ color: result.get() })
+        } else {
+          let error = { message: `No color with id "${id}" found` }
+          res.send({ error })
+        }
+      })
+    } else {
+      Color.findOne({ include: [Origin], where: { name: id } }).then(result => {
+        if (result) {
+          res.send({ color: result.get() })
+        } else {
+          let error = { message: `No color with name "${id}" found` }
+          res.send({ error })
+        }
+      })
+    }
+  } else {
+    Color.findAll({ include: [Origin], order: ["name"] }).then(results => {
+      let colors = results.map(item => item.get())
+      res.send({ colors })
+    })
+  }
 })
 
 router.get("/:id(\\d+)/periods", (req, res) => {
@@ -40,7 +50,7 @@ router.get("/:id(\\d+)/periods", (req, res) => {
           delete item.ColorsPeriods
           return item
         })
-        res.send({ periods, timestamp: Date.now() })
+        res.send({ periods })
       })
     } else {
       let error = {
@@ -63,7 +73,7 @@ router.get("/:id(\\d+)/standards", (req, res) => {
           delete item.PeriodsStandards
           return item
         })
-        res.send({ standards, timestamp: Date.now() })
+        res.send({ standards })
       })
     } else {
       let error = {
@@ -87,7 +97,7 @@ router.get("/:id(\\d+)/parts", (req, res) => {
           delete part.ColorsPaints
           return part
         })
-        res.send({ parts, timestamp: Date.now() })
+        res.send({ parts })
       })
     } else {
       let error = {

@@ -4,34 +4,47 @@
 
 const express = require("express")
 
-const {
-  Manufacturer,
-  ManufacturerLocation,
-  Origin,
-  Sequelize,
-} = require("../../models")
-const { like } = Sequelize.Op
+const { Manufacturer, ManufacturerLocation, Origin } = require("../../models")
 
 let router = express.Router()
 
-router.get("/:id(\\d+)?", (req, res) => {
-  let queryOpts = {
-    include: [ManufacturerLocation, Origin],
-    order: ["fullName"],
-    where: {},
-  }
-
+router.get("/:id?", (req, res) => {
   if (req.params.id) {
-    queryOpts.where.id = req.params.id
-  }
-  if (req.query.name) {
-    queryOpts.where.fullName = { [like]: `%${req.query.name}%` }
-  }
+    let id = req.params.id
 
-  Manufacturer.findAll(queryOpts).then(results => {
-    let manufacturers = results.map(item => item.get())
-    res.send({ manufacturers, timestamp: Date.now() })
-  })
+    if (id.match(/^\d+$/)) {
+      Manufacturer.findByPk(id, {
+        include: [ManufacturerLocation, Origin],
+      }).then(result => {
+        if (result) {
+          res.send({ manufacturer: result.get() })
+        } else {
+          let error = { message: `No manufacturer with id "${id}" found` }
+          res.send({ error })
+        }
+      })
+    } else {
+      Manufacturer.findOne({
+        include: [ManufacturerLocation, Origin],
+        where: { name: id },
+      }).then(result => {
+        if (result) {
+          res.send({ manufacturer: result.get() })
+        } else {
+          let error = { message: `No manufacturer with name "${id}" found` }
+          res.send({ error })
+        }
+      })
+    }
+  } else {
+    Manufacturer.findAll({
+      include: [ManufacturerLocation, Origin],
+      order: ["fullName"],
+    }).then(results => {
+      let manufacturers = results.map(item => item.get())
+      res.send({ manufacturers })
+    })
+  }
 })
 
 router.get("/:id(\\d+)/paints", (req, res) => {
@@ -41,7 +54,7 @@ router.get("/:id(\\d+)/paints", (req, res) => {
     if (mfr) {
       mfr.getPaints({ order: ["id"] }).then(results => {
         let paints = results.map(item => item.get())
-        res.send({ paints, timestamp: Date.now() })
+        res.send({ paints })
       })
     } else {
       let error = {

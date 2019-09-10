@@ -4,39 +4,47 @@
 
 const express = require("express")
 
-const {
-  Paint,
-  Manufacturer,
-  Origin,
-  ProductCode,
-  Sequelize,
-} = require("../../models")
-const { like } = Sequelize.Op
+const { Paint, Manufacturer, Origin, ProductCode } = require("../../models")
 
 let router = express.Router()
 
-router.get("/:id(\\d+)?", (req, res) => {
-  let queryOpts = {
-    include: [Manufacturer, Origin, ProductCode],
-    order: ["name"],
-    where: {},
-  }
-
+router.get("/:id?", (req, res) => {
   if (req.params.id) {
-    queryOpts.where.id = req.params.id
-  }
-  let query = req.query
-  if (query.part_number) {
-    queryOpts.where.partNumber = { [like]: `%${query.part_number}%` }
-  }
-  if (query.name) {
-    queryOpts.where.name = { [like]: `%${query.name}%` }
-  }
+    let id = req.params.id
 
-  Paint.findAll(queryOpts).then(results => {
-    let paints = results.map(item => item.get())
-    res.send({ paints, timestamp: Date.now() })
-  })
+    if (id.match(/^\d+$/)) {
+      Paint.findByPk(id, {
+        include: [Manufacturer, Origin, ProductCode],
+      }).then(result => {
+        if (result) {
+          res.send({ paint: result.get() })
+        } else {
+          let error = { message: `No paint with id "${id}" found` }
+          res.send({ error })
+        }
+      })
+    } else {
+      Paint.findOne({
+        include: [Manufacturer, Origin, ProductCode],
+        where: { name: id },
+      }).then(result => {
+        if (result) {
+          res.send({ paint: result.get() })
+        } else {
+          let error = { message: `No paint with name "${id}" found` }
+          res.send({ error })
+        }
+      })
+    }
+  } else {
+    Paint.findAll({
+      include: [Manufacturer, Origin, ProductCode],
+      order: ["name"],
+    }).then(results => {
+      let paints = results.map(item => item.get())
+      res.send({ paints })
+    })
+  }
 })
 
 router.get("/:id(\\d+)/attributes", (req, res) => {

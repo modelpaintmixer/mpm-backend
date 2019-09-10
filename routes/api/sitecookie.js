@@ -11,7 +11,7 @@ let router = express.Router()
 router.get("/", (req, res) => {
   SiteCookie.findAll({ order: ["createdAt"] }).then(results => {
     let sitecookies = results.map(item => item.get())
-    res.send({ sitecookies, timestamp: Date.now() })
+    res.send({ sitecookies })
   })
 })
 
@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
   SiteCookie.findOne(queryOpts).then(result => {
     if (result) {
       let sitecookie = result.get()
-      res.send({ sitecookie, timestamp: Date.now() })
+      res.send({ sitecookie })
     } else {
       let error = {
         message: `No cookie found for that ID/name (${value})`,

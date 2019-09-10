@@ -53,7 +53,7 @@ router.get("/paint/:id", (req, res) => {
         return color
       })
 
-      res.send({ paint, timestamp: Date.now() })
+      res.send({ paint })
     })
 })
 
@@ -93,7 +93,7 @@ router.get("/color/:id", (req, res) => {
         return part
       })
 
-      res.send({ color, timestamp: Date.now() })
+      res.send({ color })
     })
 })
 
@@ -128,7 +128,7 @@ router.get("/origin/:id", (req, res) => {
         return paint
       })
 
-      res.send({ origin, timestamp: Date.now() })
+      res.send({ origin })
     })
 })
 
@@ -158,7 +158,7 @@ router.get("/period/:id", (req, res) => {
         return color
       })
 
-      res.send({ period, timestamp: Date.now() })
+      res.send({ period })
     })
 })
 
@@ -198,7 +198,7 @@ router.get("/standard/:id", (req, res) => {
         return paint
       })
 
-      res.send({ standard, timestamp: Date.now() })
+      res.send({ standard })
     })
 })
 
@@ -228,7 +228,7 @@ router.get("/manufacturer/:id", (req, res) => {
         return paint
       })
 
-      res.send({ manufacturer, timestamp: Date.now() })
+      res.send({ manufacturer })
     })
 })
 
@@ -254,7 +254,7 @@ router.get("/manufacturers", (req, res) => {
   }
 
   sequelize.query(query, options).then(manufacturers => {
-    res.send({ manufacturers, timestamp: Date.now() })
+    res.send({ manufacturers })
   })
 })
 
@@ -278,7 +278,7 @@ router.get("/attribute/:id", (req, res) => {
         return paint
       })
 
-      res.send({ attribute, timestamp: Date.now() })
+      res.send({ attribute })
     })
 })
 
@@ -301,7 +301,7 @@ router.get("/attributes", (req, res) => {
   }
 
   sequelize.query(query, options).then(attributes => {
-    res.send({ attributes, timestamp: Date.now() })
+    res.send({ attributes })
   })
 })
 
@@ -319,7 +319,7 @@ router.get("/user/:id", (req, res) => {
   User.findOne(query).then(result => {
     user = result.get()
 
-    res.send({ user, timestamp: Date.now() })
+    res.send({ user })
   })
 })
 
