@@ -5,10 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     "ProductCode",
     {
       code: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(25),
         allowNull: false,
       },
-      detail: DataTypes.STRING,
+      detail: DataTypes.STRING(300),
     },
     { timestamps: false }
   )

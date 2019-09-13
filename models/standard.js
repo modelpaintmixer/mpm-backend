@@ -5,17 +5,17 @@ module.exports = (sequelize, DataTypes) => {
     "Standard",
     {
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false,
         unique: true,
       },
       displayName: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(15),
         allowNull: false,
         unique: true,
       },
       abbreviation: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         allowNull: false,
         unique: true,
       },

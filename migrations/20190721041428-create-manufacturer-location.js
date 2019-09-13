@@ -13,30 +13,30 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       url: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       street1: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       street2: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
       },
       city: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       state: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(40),
         allowNull: false,
       },
       postalCode: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(25),
         allowNull: false,
       },
       country: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(2),
         allowNull: false,
       },
       createdAt: {

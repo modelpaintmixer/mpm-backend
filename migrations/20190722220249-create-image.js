@@ -10,14 +10,14 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
       },
       path: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1024),
         allowNull: false,
       },
       sizeX: {
@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false,
       },
       dominantColor: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(6),
         allowNull: false,
       },
       createdAt: {

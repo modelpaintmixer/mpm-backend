@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     "Attribute",
     {
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(25),
         allowNull: false,
       },
       description: DataTypes.TEXT,

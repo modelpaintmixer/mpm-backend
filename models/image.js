@@ -5,12 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     "Image",
     {
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
       description: DataTypes.TEXT,
       path: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1024),
         allowNull: false,
       },
       sizeX: {
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       dominantColor: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(6),
         allowNull: false,
       },
     },

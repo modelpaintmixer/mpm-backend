@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     "SiteCookie",
     {
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
         unique: true,
       },
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         default: true,
       },
       duration: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(16),
       },
       description: {
         type: DataTypes.TEXT,

@@ -10,17 +10,17 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
         unique: true,
       },
       displayName: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(15),
         allowNull: false,
         unique: true,
       },
       abbreviation: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(10),
         allowNull: false,
         unique: true,
       },

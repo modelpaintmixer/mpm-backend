@@ -5,11 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     "Origin",
     {
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
       abbreviation: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         allowNull: false,
       },
       notes: DataTypes.TEXT,

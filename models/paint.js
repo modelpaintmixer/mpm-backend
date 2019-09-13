@@ -5,19 +5,19 @@ module.exports = (sequelize, DataTypes) => {
     "Paint",
     {
       partNumber: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(16),
         allowNull: false,
       },
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
       colorHex: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(6),
         allowNull: false,
       },
-      colorRgb: DataTypes.STRING,
-      colorHsl: DataTypes.STRING,
+      colorRgb: DataTypes.STRING(12),
+      colorHsl: DataTypes.STRING(25),
       transparent: {
         type: DataTypes.BOOLEAN,
         default: false,

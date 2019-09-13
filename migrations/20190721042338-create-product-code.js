@@ -10,11 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       code: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(25),
         allowNull: false,
       },
       detail: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(300),
       },
     })
   },

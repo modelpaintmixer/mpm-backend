@@ -11,7 +11,7 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         unique: true,
       },
       needed: {
@@ -19,7 +19,7 @@ module.exports = {
         default: true,
       },
       duration: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(16),
       },
       description: {
         allowNull: false,

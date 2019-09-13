@@ -10,22 +10,22 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       partNumber: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(16),
         allowNull: false,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       colorHex: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(6),
         allowNull: false,
       },
       colorRgb: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(12),
       },
       colorHsl: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(25),
       },
       transparent: {
         type: Sequelize.BOOLEAN,

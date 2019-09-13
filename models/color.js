@@ -5,16 +5,16 @@ module.exports = (sequelize, DataTypes) => {
     "Color",
     {
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
-      credit: DataTypes.STRING,
+      credit: DataTypes.STRING(100),
       colorHex: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(6),
         // allowNull: false,
       },
-      colorRgb: DataTypes.STRING,
-      colorHsl: DataTypes.STRING,
+      colorRgb: DataTypes.STRING(12),
+      colorHsl: DataTypes.STRING(25),
       description: DataTypes.STRING(512),
       notes: DataTypes.TEXT,
     },

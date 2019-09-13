@@ -10,21 +10,21 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       credit: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
       },
       colorHex: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(6),
         // allowNull: false,
       },
       colorRgb: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(12),
       },
       colorHsl: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(25),
       },
       description: {
         type: Sequelize.STRING(512),

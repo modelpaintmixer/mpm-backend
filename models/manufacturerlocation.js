@@ -6,28 +6,28 @@ module.exports = (sequelize, DataTypes) => {
     {
       isMain: DataTypes.BOOLEAN,
       url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
       street1: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
-      street2: DataTypes.STRING,
+      street2: DataTypes.STRING(100),
       city: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
       state: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(40),
         allowNull: false,
       },
       postalCode: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(25),
         allowNull: false,
       },
       country: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(2),
         allowNull: false,
       },
     },
