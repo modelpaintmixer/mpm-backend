@@ -20,6 +20,8 @@ const view = require("./view")
 const topn = require("./topn")
 const minimal = require("./minimal")
 
+const update = require("./update")
+
 let router = express.Router()
 router.use(cors())
 
@@ -37,5 +39,7 @@ router.use("/stats", stats)
 router.use("/view", view)
 router.use("/topn", topn)
 router.use("/minimal", minimal)
+
+router.use("/update", update)
 
 module.exports = router
