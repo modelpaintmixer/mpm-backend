@@ -6,7 +6,7 @@ const express = require("express")
 
 const { Attribute } = require("../../../models")
 
-let router = express.Router()
+const router = express.Router()
 
 router.post("/", (req, res) => {
   const { id, name, description, action } = req.body
@@ -18,33 +18,44 @@ router.post("/", (req, res) => {
       })
       .then(attribute => {
         attribute = attribute.get()
-        res.send({ attribute })
+        res.send({ status: "success", attribute })
       })
       .catch(error => {
-        res.send({ error })
+        error = error.errors[0]
+        res.send({ status: "error", error })
       })
   } else if (action === "create") {
     Attribute.create({ name, description })
       .then(attribute => {
         attribute = attribute.get()
-        res.send({ attribute })
+        res.send({ status: "success", attribute })
       })
       .catch(error => {
-        res.send({ error })
+        error = error.errors[0]
+        res.send({ status: "error", error })
       })
   } else if (action === "delete") {
     Attribute.findByPk(id)
       .then(attribute => {
-        return attribute.delete()
+        if (attribute) {
+          return attribute.destroy()
+        } else {
+          return res.send({
+            status: "error",
+            error: { message: "No such attribute" },
+          })
+        }
       })
       .then(() => {
         res.send({ status: "success" })
       })
       .catch(error => {
-        res.send({ error })
+        console.log(JSON.stringify(error))
+        // error = error.errors[0]
+        res.send({ status: "error", error })
       })
   } else {
-    res.send({ error: `Unknown action: ${action}` })
+    res.send({ status: "error", error: `Unknown action: ${action}` })
   }
 })
 
