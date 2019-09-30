@@ -6,7 +6,7 @@ const helmet = require("helmet")
 const api = require("./routes/api")
 
 var app = express()
-app.use(express.urlencoded())
+app.use(express.json())
 app.use(helmet())
 app.use("/api", api)
 app.get("/", (req, res) => res.send("OK"))
