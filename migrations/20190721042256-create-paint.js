@@ -23,9 +23,7 @@ module.exports = {
       },
       colorRgb: {
         type: Sequelize.STRING(12),
-      },
-      colorHsl: {
-        type: Sequelize.STRING(25),
+        allowNull: false,
       },
       transparent: {
         type: Sequelize.BOOLEAN,

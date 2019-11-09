@@ -3,7 +3,7 @@
 const date = new Date("2019-08-28T20:27:21.031Z")
 const fs = require("fs")
 const os = require("os")
-const { hexToRgb, rgbToHsl } = require("../lib/colors")
+const { hexToRgb } = require("../lib/colors")
 
 module.exports = {
   up: queryInterface => {
@@ -56,14 +56,12 @@ module.exports = {
           let newPaint = {}
           let hexColor = line[3]
           let rgbColor = hexToRgb(hexColor)
-          let hslColor = rgbToHsl(rgbColor[0], rgbColor[1], rgbColor[2])
 
           newPaint["manufacturerId"] = tamiyaId
           newPaint["partNumber"] = line[1]
           newPaint["name"] = line[2]
           newPaint["colorHex"] = hexColor
           newPaint["colorRgb"] = rgbColor.join(",")
-          newPaint["colorHsl"] = hslColor.join(",")
           newPaint["originId"] = line[7] ? originsMap[line[7]] : null
           newPaint["transparent"] = false
           newPaint["clear"] = false
