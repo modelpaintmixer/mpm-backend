@@ -81,7 +81,7 @@ Tamiya,XF-69,NATO Black,382225,acrylic|flat,81769,81369,NATO
 Tamiya,XF-70,Dark Green 2,254737,acrylic|flat,81770,81370,
 Tamiya,XF-71,Cockpit Green,76977c,acrylic|flat,81771,81371,
 Tamiya,XF-72,JGSDF Brown,83613b,acrylic|flat,81772,,JP
-Tamiya,XF-73,JGSDF Dark Green,396742,acrylic|flat,8177JP3,,JP
+Tamiya,XF-73,JGSDF Dark Green,396742,acrylic|flat,81773,,JP
 Tamiya,XF-74,JGSDF Olive Drab,3f5c3e,acrylic|flat,81774,,JP
 Tamiya,XF-75,IJN Gray,626d6f,acrylic|flat,81775,,JP
 Tamiya,XF-76,Gray-Green,a3b289,acrylic|flat,81776,,
