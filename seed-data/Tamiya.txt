@@ -99,3 +99,5 @@ Tamiya,XF-87,IJN Gray (Maizuru Arsenal),7e7f84,acrylic|flat,81787,,JP
 Tamiya,XF-88,DK Yellow 2,c1af4d,acrylic|flat,81788,,DE
 Tamiya,XF-89,DK Green 2,5c8462,acrylic|flat,81789,,DE
 Tamiya,XF-90,Red Brown 2,4f3832,acrylic|flat,81790,,DE
+Tamiya,XF-92,Yellow-Brown (DAK 1941),b28252,acrylic|flat,81792,,DE
+Tamiya,XF-93,Light Brown (DAK 1942),e5b36e,acrylic|flat,81793,,DE
